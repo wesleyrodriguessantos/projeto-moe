@@ -19,10 +19,10 @@ class Home extends BaseController
 		return view('registro');
 	}
 
-	public function estagiario()
-	{
-		return view('formulario');
-	}
+	// public function estagiario()
+	// {
+	// 	return view('formulario');
+	// }
 
 	public function novoEstagiario()
 	{
@@ -40,10 +40,10 @@ class Home extends BaseController
 		return redirect()->to('/cadastro')->with('message', 'Estagiário Cadastrado com Sucesso! Um email foi enviado para confirmar a sua inscrição!');
 	}
 
-	public function empregador()
-	{
-		return view('formularioEmp');
-	}
+	// public function empregador()
+	// {
+	// 	return view('formularioEmp');
+	// }
 	public function novoEmpregador()
 	{
 		$modelEmpregador = new Empregador();
@@ -61,9 +61,9 @@ class Home extends BaseController
 		return redirect()->to('/cadastro')->with('message', 'Registro de Empregador efetuado com sucesso!  Um email foi enviado para confirmar a sua inscrição!');
 	}
 
-	public function sair()
-	{
-		session()->destroy();
-		return redirect()->to('/');
-	}
+	// public function sair()
+	// {
+	// 	session()->destroy();
+	// 	return redirect()->to('/');
+	// }
 }
