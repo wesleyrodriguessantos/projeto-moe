@@ -32,12 +32,12 @@
       </div>
     </nav>
   </div>
-  <div class="page">
+  <main class="page">
     <div class="registro">
-      <!-- <form action="/registrar" method="POST" data-parsley-validate> -->
+      <!-- <form data-parsley-validate> -->
       <?php
       helper('form');
-      echo form_open('home/novoestagiario');
+      echo form_open('home/novoestagiario', 'id="form1" data-parsley-validate');
       ?>
       <div class="row">
         <div class="col s12 m10 l8 card-wrapper">
@@ -47,23 +47,22 @@
               <div class="input-field">
                 <i class="material-icons prefix">email</i>
                 <label for="email">E-mail <span class="required">*</span></label>
-                <input id="email" type="email" name="email" placeholder="E-mail" value="<?= old('email') ?>" maxlength="50" required>
+                <input id="email" class="validate" type="email" name="email" value="<?= old('email') ?>" required>
+                <span class="helper-text" data-error="incorreto" data-success="correto"></span>
               </div>
-
               <div class="row">
-
                 <div class="input-field col s12 m6">
                   <i class="material-icons prefix">password</i>
                   <label for="senha">Senha <span class="required">*</span></label>
-                  <input id="senha" type="password" name="senha" placeholder="Senha" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="50" required>
+                  <input id="senha" class="validate" type="password" name="senha" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" required>
+                  <span class="helper-text" data-error="incorreto" data-success="correto"></span>
                 </div>
-                <!-- <div class="input-field col s12 m6 senha-confirm">
-                    <label for="senha_confirm">Confirmação da Senha <span class="required">*</span></label>
-                    <input id="senha_confirm" type="password" name="senha_confirm" placeholder="Senha" minlength="6" maxlength="50" data-parsley-equalto="#senha" required>
-                  </div> -->
-
+                <div class="input-field col s12 m6 senha-confirm">
+                  <label for="senha_confirm">Confirme a senha <span class="required">*</span></label>
+                  <input id="senha_confirm" class="validate" type="password" name="senha_confirm" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" data-parsley-equalto="#senha" data-parsley-trigger="focusout" required>
+                  <span class="helper-text" data-error="incorreto" data-success="correto"></span>
+                </div>
               </div>
-
               <div class="descricao-senha">
                 <small>A senha deve possuir ao menos 6 caracteres, uma letra maiúscula, um número e um caractere especial.</small>
               </div>
@@ -92,24 +91,26 @@
               <div class="estagiario">
 
                 <div class="row">
-
-                  <label for="nome_estagiario">Seu Nome</label>
-                  <input type="text" name="nome_estagiario" id="nome_estagiario" required> <br>
-
-                  <label for="curso_estagiario">Curso Estagiário</label>
-                  <input type="text" name="curso_estagiario" required> <br>
-
-                  <label for="ano_ingresso_estagiario">Ano de Ingresso</label>
-                  <input type="text" name="ano_ingresso_estagiario" required> <br>
-
-                  <label for="minicurriculo_estagiario">Uma rápida descrição de você</label>
-                  <input type="text" name="minicurriculo_estagiario" required> <br>
-
-                  <!-- <label hidden for="email">Email</label>
-                  <input hidden type="email" name="email" id="email2" value="" required> <br>
-
-                  <label for="senha">Senha</label>
-                  <input type="password" name="senha" id="senha2" value="" required> <br> -->
+                  <div class="input-field">
+                    <i class="material-icons prefix">person</i>
+                    <label for="nome_estagiario">Seu Nome <span class="required">*</span></label>
+                    <input type="text" class="validate" name="nome_estagiario" id="nome_estagiario" value="<?= old('nome_estagiario') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">school</i>
+                    <label for="curso_estagiario">Nome do Curso <span class="required">*</span></label>
+                    <input type="text" class="validate" name="curso_estagiario" id="curso_estagiario" value="<?= old('curso_estagiario') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">date_range</i>
+                    <label for="ano_ingresso_estagiario">Ano de Ingresso <span class="required">*</span></label>
+                    <input type="text" class="validate" name="ano_ingresso_estagiario" id="ano_ingresso_estagiario" value="<?= old('ano_ingresso_estagiario') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">description</i>
+                    <label for="minicurriculo_estagiario">Minicurrículo <span class="required">*</span></label>
+                    <textarea type="text" class="materialize-textarea validate" name="minicurriculo_estagiario" id="minicurriculo_estagiario" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
+                  </div>
 
                   <button class="btn right btn-primario" type="submit">Registrar-se</button>
 
@@ -125,26 +126,37 @@
                   helper('form');
                   echo form_open('home/novoempregador');
                   ?>
-                  <label for="nome_empresa">Nome da Empresa</label>
-                  <input type="text" name="nome_empresa" required> <br>
-
-                  <label for="endereco_empresa">Endereço da Empresa</label>
-                  <input type="text" name="endereco_empresa" required> <br>
-
-                  <label for="pessoa_de_contato">Pessoa para Contato</label>
-                  <input type="text" name="pessoa_de_contato" required> <br>
-
-                  <label for="descricao_empresa">Descrição da Empresa</label>
-                  <input type="text" name="descricao_empresa" required> <br>
-
-                  <label for="produtos_empresa">Produtos da Empresa</label>
-                  <input type="text" name="produtos_empresa" required> <br>
+                  <div class="input-field">
+                    <i class="material-icons prefix">work</i>
+                    <label for="nome_empresa">Nome da Empresa <span class="required">*</span></label>
+                    <input type="text" class="validate" name="nome_empresa" id="nome_empresa" value="<?= old('nome_empresa') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">add_location</i>
+                    <label for="endereco_empresa">Endereço da Empresa <span class="required">*</span></label>
+                    <input type="text" class="validate" name="endereco_empresa" id="endereco_empresa" value="<?= old('endereco_empresa') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">badge</i>
+                    <label for="pessoa_de_contato">Nome da Pessoa para Contato <span class="required">*</span></label>
+                    <input type="text" class="validate" name="pessoa_de_contato" id="pessoa_de_contato" value="<?= old('pessoa_de_contato') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">description</i>
+                    <label for="descricao_empresa">Descrição da Empresa <span class="required">*</span></label>
+                    <textarea type="text" class="materialize-textarea validate" name="descricao_empresa" id="descricao_empresa" value="<?= old('descricao_empresa') ?>" required></textarea>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">shop</i>
+                    <label for="produtos_empresa">Produtos/Serviços que Empresa oferece <span class="required">*</span></label>
+                    <input type="text" class="validate" name="produtos_empresa" id="produtos_empresa" value="<?= old('produtos_empresa') ?>" required>
+                  </div>
 
                   <label hidden for="email">Email</label>
-                  <input hidden type="email" name="email" id="email2" value="" required> <br>
+                  <input hidden type="email" name="email" id="email2" value="" required>
 
                   <label hidden for="senha">Senha</label>
-                  <input hidden type="password" name="senha" id="senha2" value="" required> <br>
+                  <input hidden type="password" name="senha" id="senha2" value="" required>
 
                   <button class="btn right btn-primario" type="submit">Registrar-se</button>
 
@@ -162,7 +174,7 @@
 
     </div>
 
-  </div>
+  </main>
   <!-- <a href="/login-estagiario">
     <button>Cadastrar Estagiário</button>
   </a>
@@ -170,6 +182,11 @@
     <button>Cadastrar Empresa/Empregador</button>
   </a> -->
   <script>
+    $('#minicurriculo_estagiario').val('New Text');
+    M.textareaAutoResize($('#minicurriculo_estagiario'));
+
+    $('#descricao_empresa').val('New Text');
+    M.textareaAutoResize($('#descricao_empresa'));
   </script>
   <script src="/resources/jquery-3.6.0.min.js"></script>
   <script src="/resources/materialize/materialize.min.js"></script>

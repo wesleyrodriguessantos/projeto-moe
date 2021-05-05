@@ -30,7 +30,6 @@ $(function () {
 
     });
 
-    //página de registro de usuário
     $('.page .registro').each(function () {
 
         let $self = $(this);
@@ -45,11 +44,11 @@ $(function () {
 
             if ($tipoConta == 'estagiario') {
 
-                //esconder empregador e mostrar estagiario
+                //Esconde o EMPREGADOR e Mostra o ESTAGIÁRIO
                 $formEmpregador.addClass('d-none');
                 $formEstagiario.removeClass('d-none');
 
-                //remover required de empregador e adicionar em estagiario
+                //remove o required do EMPREGADOR e o adiciona em ESTAGIÁRIO
 
                 $formEmpregador.find('input').each(function () {
                     $(this).removeAttr('required');
@@ -67,11 +66,11 @@ $(function () {
 
             } else if ($tipoConta == 'empregador') {
 
-                //esconder estagiario e mostrar empregador
+                //esconder a classe do ESTAGIÁRIO e mostra a classe doEMPREGADOR
                 $formEstagiario.addClass('d-none');
                 $formEmpregador.removeClass('d-none');
 
-                //remover required de estagiario e adicionar em empregador
+                //remove o required do ESTAGIÁRIO e o adiciona em EMPREGADOR
 
                 $formEstagiario.find('input').each(function () {
                     $(this).removeAttr('required');
@@ -88,7 +87,7 @@ $(function () {
                 $formEmpregador.find('textarea').removeAttr('data-parsley-excluded');
 
             }
-
+            // Realiza a Cópia para o campo email do EMPREGADOR
             var input = document.querySelector("#email");
             var texto = input.value;
             document.getElementById('email2').value = texto;
