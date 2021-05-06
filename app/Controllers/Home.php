@@ -18,6 +18,73 @@ class Home extends BaseController
 		return view('login');
 	}
 
+	public function ambienteEstagiario()
+	{
+		return view('telaEstag');
+	}
+
+	public function ambienteEmpregador()
+	{
+		return view('telaEmp');
+	}
+	/**
+	 * Salva o usuário na sessão (faz o login)
+	 */
+	private function setUsuario($usuario)
+	{
+
+		$data = [
+			'email' => $usuario['email'],
+			'tipo_usuario' => $usuario['tipo_usuario'],
+			'logado' => true
+		];
+
+		session()->set($data);
+	}
+
+	public function login_action()
+	{
+		$request = service('request');
+
+		$regras = [
+			'email' => 'required|valid_email|max_length[50]',
+			'senha' => 'required|min_length[6]|max_length[50]',
+		];
+
+		if ($this->validate($regras)) {
+			$modelEst = new Estagiario();
+			$modelEmp = new Empregador();
+
+			$result = $modelEst->where('email', $this->request->getVar('email'))->first();
+
+			if ($result) {
+				if (password_verify($request->getVar('senha'), $result['senha'])) {
+					$this->setUsuario($result); //realiza o login
+
+					return redirect()->to('/estagiario')->with('success', 'Estagiário Logado com sucesso!');
+				} else {
+					return redirect()->back()->withInput()->with('warning', 'Email ou Senha Incorretos!!');
+				}
+			} else {
+				$result2 = $modelEmp->where('email', $this->request->getVar('email'))->first();
+
+				if ($result2) {
+					if (password_verify($request->getVar('senha'), $result2['senha'])) {
+						$this->setUsuario($result2); //realiza o login
+
+						return redirect()->to('/empregador')->with('success', 'Empregador Logado com sucesso!');
+					} else {
+						return redirect()->back()->withInput()->with('warning', 'Email ou Senha Incorretos!!');
+					}
+				} else {
+					return redirect()->back()->withInput()->with('errors', 'Não existe cadastro para o email informado.');
+				}
+			}
+		} else { //caso a validação veha a falhar
+			return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+		}
+	}
+
 	public function registrar()
 	{
 		return view('registro');
