@@ -53,9 +53,10 @@ class Home extends BaseController
 
 		if ($this->validate($regras)) {
 			$modelEst = new Estagiario();
-			$modelEmp = new Empregador();
+
 
 			$result = $modelEst->where('email', $this->request->getVar('email'))->first();
+
 
 			if ($result) {
 				if (password_verify($request->getVar('senha'), $result['senha'])) {
@@ -66,8 +67,8 @@ class Home extends BaseController
 					return redirect()->back()->withInput()->with('warning', 'Email ou Senha Incorretos!!');
 				}
 			} else {
+				$modelEmp = new Empregador();
 				$result2 = $modelEmp->where('email', $this->request->getVar('email'))->first();
-
 				if ($result2) {
 					if (password_verify($request->getVar('senha'), $result2['senha'])) {
 						$this->setUsuario($result2); //realiza o login
