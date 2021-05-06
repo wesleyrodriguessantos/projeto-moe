@@ -1,7 +1,7 @@
 <h1 align="center"> Mural de Oportunidades de Estágio - MOE</h1>
 
 <h2 align="center">Trabalho da disciplina de Projeto de Software - Professor Cássio Leonardo</h2>
-<h2 align="center"> Alunos: Wesley Rodrigues e Arlley Matheus</h2>
+<h2 align="center"> Alunos: <a href="https://github.com/wesleyrodriguessantos">Wesley Rodrigues</a> e <a href="https://github.com/">Arlley Matheus</a></h2>
 <hr>
 <h2 align="center">Descrição</h2>
 
