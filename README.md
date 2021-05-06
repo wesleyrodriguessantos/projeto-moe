@@ -26,7 +26,7 @@ MOE.</p>
 - [x] phpMyAdmin
 
 <h3 align="center">Execute o script abaixo para criar o banco de dados</h3>
-
+<pre>
   USE moe;
   CREATE TABLE estagiario
   (
@@ -54,3 +54,4 @@ MOE.</p>
   status_empregador CHAR(1) DEFAULT '1',
   tipo_usuario CHAR DEFAULT '2'
   );
+  </pre>
