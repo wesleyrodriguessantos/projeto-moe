@@ -12,7 +12,7 @@ empresas podem consultar se há alunos com o perfil desejado disponíveis no MOE
 e alunos podem consultar se há vagas disponíveis nas empresas participantes do
 MOE.</p>
 
-### "Habilitadores Tecnológicos" e Tecnologias usadas nesse projeto:
+<h3 align="center">"Habilitadores Tecnológicos" e Tecnologias usadas nesse projeto:</h3>
 
 - [x] Framework CodeIgniter
 - [x] Xampp
@@ -27,31 +27,31 @@ MOE.</p>
 
 <h3 align="center">Execute o script abaixo para criar o banco de dados</h3>
 <pre>
-  USE moe;
-  CREATE TABLE estagiario
-  (
-  id_estagiario INT AUTO_INCREMENT PRIMARY KEY,
-  nome_estagiario VARCHAR(80) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  senha VARCHAR(255),
-  curso_estagiario VARCHAR(80) NOT NULL,
-  ano_ingresso_estagiario YEAR NOT NULL,
-  minicurriculo_estagiario TEXT,
-  status_estagiario CHAR DEFAULT '1',
-  tipo_usuario CHAR DEFAULT '1'
-  );
+USE moe;
+CREATE TABLE estagiario
+(
+id_estagiario INT AUTO_INCREMENT PRIMARY KEY,
+nome_estagiario VARCHAR(80) NOT NULL,
+email VARCHAR(100) UNIQUE NOT NULL,
+senha VARCHAR(255),
+curso_estagiario VARCHAR(80) NOT NULL,
+ano_ingresso_estagiario YEAR NOT NULL,
+minicurriculo_estagiario TEXT,
+status_estagiario CHAR DEFAULT '1',
+tipo_usuario CHAR DEFAULT '1'
+);
 
-  CREATE TABLE empregador
-  (
-  id_empregador INT AUTO_INCREMENT PRIMARY KEY,
-  nome_empresa VARCHAR(60) UNIQUE NOT NULL,
-  endereco_empresa VARCHAR(80) NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  senha VARCHAR(255) NOT NULL,
-  pessoa_de_contato VARCHAR(60) NOT NULL,
-  descricao_empresa TEXT,
-  produtos_empresa VARCHAR(220),
-  status_empregador CHAR(1) DEFAULT '1',
-  tipo_usuario CHAR DEFAULT '2'
-  );
+CREATE TABLE empregador
+(
+id_empregador INT AUTO_INCREMENT PRIMARY KEY,
+nome_empresa VARCHAR(60) UNIQUE NOT NULL,
+endereco_empresa VARCHAR(80) NOT NULL,
+email VARCHAR(100) UNIQUE NOT NULL,
+senha VARCHAR(255) NOT NULL,
+pessoa_de_contato VARCHAR(60) NOT NULL,
+descricao_empresa TEXT,
+produtos_empresa VARCHAR(220),
+status_empregador CHAR(1) DEFAULT '1',
+tipo_usuario CHAR DEFAULT '2'
+);
   </pre>
