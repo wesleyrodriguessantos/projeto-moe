@@ -158,17 +158,17 @@
                   <div class="input-field">
                     <i class="material-icons prefix">work</i>
                     <label for="nome_empresa">Nome da Empresa <span class="required">*</span></label>
-                    <input type="text" class="validate" name="nome_empresa" id="nome_empresa" value="<?= old('nome_empresa') ?>" required>
+                    <input type="text" class="validate" name="nome_empresa" id="nome_empresa" value="<?= old('nome_empresa') ?>" maxlength="60" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">add_location</i>
                     <label for="endereco_empresa">Endereço da Empresa <span class="required">*</span></label>
-                    <input type="text" class="validate" name="endereco_empresa" id="endereco_empresa" value="<?= old('endereco_empresa') ?>" required>
+                    <input type="text" class="validate" name="endereco_empresa" id="endereco_empresa" value="<?= old('endereco_empresa') ?>" maxlength="80" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">badge</i>
                     <label for="pessoa_de_contato">Nome da Pessoa para Contato <span class="required">*</span></label>
-                    <input type="text" class="validate" name="pessoa_de_contato" id="pessoa_de_contato" value="<?= old('pessoa_de_contato') ?>" required>
+                    <input type="text" class="validate" name="pessoa_de_contato" id="pessoa_de_contato" value="<?= old('pessoa_de_contato') ?>" maxlength="60" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">description</i>
@@ -178,7 +178,7 @@
                   <div class="input-field">
                     <i class="material-icons prefix">shop</i>
                     <label for="produtos_empresa">Produtos/Serviços que Empresa oferece <span class="required">*</span></label>
-                    <input type="text" class="validate" name="produtos_empresa" id="produtos_empresa" value="<?= old('produtos_empresa') ?>" required>
+                    <input type="text" class="validate" name="produtos_empresa" id="produtos_empresa" value="<?= old('produtos_empresa') ?>" maxlength="220" required>
                   </div>
 
                   <label hidden for="email">Email</label>

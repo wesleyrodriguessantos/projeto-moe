@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/resources/materialize/materialize.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <title>Code Igniter 4</title>
+  <title>Tela de Login - MOE</title>
 
 </head>
 
@@ -30,6 +30,39 @@
     <li><a href="/cadastrar">Cadastrar</a></li>
     <li><a href="/login">Entrar</a></li>
   </ul>
+
+  <?php if (session()->has('success')) : ?>
+    <div class="materialert success">
+      <div class="material-icons">check</div>
+      <?= session('success') ?>
+      <button type="button" class="close-alert">×</button>
+    </div>
+  <?php endif ?>
+
+  <?php if (session()->has('warning')) : ?>
+    <div class="materialert warning">
+      <div class="material-icons">warning</div>
+      <?= session('warning') ?>
+      <button type="button" class="close-alert">×</button>
+    </div>
+  <?php endif ?>
+
+  <?php if (session()->has('errors')) : ?>
+    <div class="materialert error">
+      <div class="material-icons">error</div>
+      <?php if (is_array(session('errors'))) : ?>
+        <ul>
+          <?php foreach (session('errors') as $error) : ?>
+            <li><?= $error ?></li>
+          <?php endforeach ?>
+        </ul>
+      <?php else : ?>
+        <?= session('errors') ?>
+      <?php endif ?>
+      <button type="button" class="close-alert">×</button>
+    </div>
+  <?php endif ?>
+
   <main class="page">
     <h2>Página de Login</h2>
   </main>
