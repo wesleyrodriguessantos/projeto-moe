@@ -9,32 +9,61 @@
   <link rel="stylesheet" href="/resources/materialize/materialize.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <title>Code Igniter 4</title>
+  <title>Tela de Cadastro de Usuário - MOE</title>
 
 </head>
 
 <body>
-
-  <?php
-  if (session()->has("message")) {
-    echo session("message");
-  }
-  ?>
-
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="" class="brand-logo">MOE</a>
+        <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-
+          <li><a href="/login">Login</a></li>
         </ul>
       </div>
     </nav>
   </div>
+  <ul class="sidenav" id="sidenav">
+    <li><a href="/cadastrar">Cadastrar</a></li>
+    <li><a href="/login">Entrar</a></li>
+  </ul>
+
+  <?php if (session()->has('success')) : ?>
+    <div class="materialert success">
+      <div class="material-icons">check</div>
+      <?= session('success') ?>
+      <button type="button" class="close-alert">×</button>
+    </div>
+  <?php endif ?>
+
+  <?php if (session()->has('warning')) : ?>
+    <div class="materialert warning">
+      <div class="material-icons">warning</div>
+      <?= session('warning') ?>
+      <button type="button" class="close-alert">×</button>
+    </div>
+  <?php endif ?>
+
+  <?php if (session()->has('errors')) : ?>
+    <div class="materialert error">
+      <div class="material-icons">error</div>
+      <?php if (is_array(session('errors'))) : ?>
+        <ul>
+          <?php foreach (session('errors') as $error) : ?>
+            <li><?= $error ?></li>
+          <?php endforeach ?>
+        </ul>
+      <?php else : ?>
+        <?= session('errors') ?>
+      <?php endif ?>
+      <button type="button" class="close-alert">×</button>
+    </div>
+  <?php endif ?>
+
   <main class="page">
     <div class="registro">
-      <!-- <form data-parsley-validate> -->
       <?php
       helper('form');
       echo form_open('home/novoestagiario', 'id="form1" data-parsley-validate');
@@ -43,11 +72,11 @@
         <div class="col s12 m10 l8 card-wrapper">
           <div class="card white darken-2">
             <div class="card-content black-text">
-              <span class="card-title">Criar conta</span>
+              <span class="card-title center-align">Criar conta</span>
               <div class="input-field">
                 <i class="material-icons prefix">email</i>
                 <label for="email">E-mail <span class="required">*</span></label>
-                <input id="email" class="validate" type="email" name="email" value="<?= old('email') ?>" required>
+                <input id="email" class="validate" type="email" name="email" value="<?= old('email') ?>" maxlength="100" required>
                 <span class="helper-text" data-error="incorreto" data-success="correto"></span>
               </div>
               <div class="row">
@@ -94,17 +123,17 @@
                   <div class="input-field">
                     <i class="material-icons prefix">person</i>
                     <label for="nome_estagiario">Seu Nome <span class="required">*</span></label>
-                    <input type="text" class="validate" name="nome_estagiario" id="nome_estagiario" value="<?= old('nome_estagiario') ?>" required>
+                    <input type="text" class="validate" name="nome_estagiario" id="nome_estagiario" value="<?= old('nome_estagiario') ?>" maxlength="80" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">school</i>
                     <label for="curso_estagiario">Nome do Curso <span class="required">*</span></label>
-                    <input type="text" class="validate" name="curso_estagiario" id="curso_estagiario" value="<?= old('curso_estagiario') ?>" required>
+                    <input type="text" class="validate" name="curso_estagiario" id="curso_estagiario" value="<?= old('curso_estagiario') ?>" maxlength="80" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">date_range</i>
                     <label for="ano_ingresso_estagiario">Ano de Ingresso <span class="required">*</span></label>
-                    <input type="text" class="validate" name="ano_ingresso_estagiario" id="ano_ingresso_estagiario" value="<?= old('ano_ingresso_estagiario') ?>" required>
+                    <input type="number" class="validate" name="ano_ingresso_estagiario" id="ano_ingresso_estagiario" value="<?= old('ano_ingresso_estagiario') ?>" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">description</i>
@@ -169,18 +198,9 @@
           </div>
         </div>
       </div>
-
-      <!-- </form> -->
-
     </div>
 
   </main>
-  <!-- <a href="/login-estagiario">
-    <button>Cadastrar Estagiário</button>
-  </a>
-  <a href="/login-empregador">
-    <button>Cadastrar Empresa/Empregador</button>
-  </a> -->
   <script>
     $('#minicurriculo_estagiario').val('New Text');
     M.textareaAutoResize($('#minicurriculo_estagiario'));

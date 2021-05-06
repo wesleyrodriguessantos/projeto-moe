@@ -32,9 +32,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/cadastro', 'Home::registrar');
-$routes->get('/login-estagiario', 'Home::estagiario');
-$routes->get('/login-empregador', 'Home::empregador');
+$routes->get('/cadastrar', 'Home::registrar');
+$routes->get('/login', 'Home::login');
 
 /*
  * --------------------------------------------------------------------

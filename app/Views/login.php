@@ -31,7 +31,7 @@
     <li><a href="/login">Entrar</a></li>
   </ul>
   <main class="page">
-    <h2>Página Inicial</h2>
+    <h2>Página de Login</h2>
   </main>
 
   <script src="/resources/jquery-3.6.0.min.js"></script>
