@@ -27,6 +27,8 @@ class Home extends BaseController
 	{
 		return view('telaEmp');
 	}
+
+
 	/**
 	 * Salva o usuário na sessão (faz o login)
 	 */
@@ -256,9 +258,11 @@ class Home extends BaseController
 		}
 	}
 
-	// public function sair()
-	// {
-	// 	session()->destroy();
-	// 	return redirect()->to('/');
-	// }
+	public function logout()
+	{
+
+		session()->destroy();
+
+		return redirect()->to('/')->with('success', 'Deslogado com Sucesso!!');
+	}
 }

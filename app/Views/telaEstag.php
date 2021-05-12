@@ -18,15 +18,15 @@
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/cadastrar">Cadastrar</a></li>
-          <li><a href="/login">Entrar</a></li>
+          <li><a href="/cadastrar">Cadastrar novo Usuário</a></li>
+          <li><a href="/sair">Sair</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul class="sidenav" id="sidenav">
-    <li><a href="/cadastrar">Cadastrar</a></li>
-    <li><a href="/login">Entrar</a></li>
+    <li><a href="/cadastrar">Cadastrar novo Usuário</a></li>
+    <li><a href="/sair">Sair</a></li>
   </ul>
 
   <?php if (session()->has('success')) : ?>

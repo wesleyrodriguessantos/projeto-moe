@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/cadastrar', 'Home::registrar');
 $routes->get('/login', 'Home::login');
+$routes->get('/sair', 'Home::logout');
 $routes->get('/estagiario', 'Home::ambienteEstagiario');
 $routes->get('/empregador', 'Home::ambienteEmpregador');
 
