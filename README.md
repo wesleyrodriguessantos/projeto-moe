@@ -40,7 +40,6 @@ minicurriculo_estagiario TEXT,
 status_estagiario CHAR DEFAULT '1',
 tipo_usuario CHAR DEFAULT '1'
 );
-
 CREATE TABLE IF NOT EXISTS empregador
 (
 id_empregador INT AUTO_INCREMENT PRIMARY KEY,
