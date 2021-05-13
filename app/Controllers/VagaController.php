@@ -17,10 +17,7 @@ class VagaController extends BaseController
 
   public function cadastrarVaga()
   {
-    if (session()->isLoggedIn === TRUE) {
-
-      return view('cadastroVaga');
-    }
+    return view('cadastroVaga');
   }
 
   public function novaVaga()
@@ -85,7 +82,7 @@ class VagaController extends BaseController
       $vaga['descricao_vaga'] = $this->request->getPost('descricao_vaga');
       $vaga['horas'] = $this->request->getPost('horas');
       $vaga['remuneracao'] = $this->request->getPost('remuneracao');
-      $vaga['id_empregadorVaga'] = '2';
+      $vaga['id_empregadorVaga'] = $this->request->getPost('id_empregadorVaga');
 
       $modelVaga->save($vaga);
 
@@ -96,7 +93,7 @@ class VagaController extends BaseController
         return redirect()->back()->withInput()->with('warning', 'Não foi possível salvar os dados da vaga no momento. Tente novamente mais tarde.');
       } else {
 
-        return redirect()->to('/vagas')->with('success', 'Vaga Cadastrada com Sucesso! Obrigado por confiar em nossos serviços!');
+        return redirect()->to('/empregador')->with('success', 'Vaga Cadastrada com Sucesso! Obrigado por confiar em nossos serviços!');
       }
     } else { //retorna ao formulário de registro caso a validação falhe
 

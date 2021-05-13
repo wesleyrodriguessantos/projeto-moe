@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="indigo lighten-5">
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
@@ -72,7 +72,7 @@
       ?>
       <div class="row">
         <div class="col s12 m10 l8 card-wrapper">
-          <div class="card white darken-2">
+          <div class="card grey lighten-5">
             <div class="card-content black-text">
               <span class="card-title center-align">Login - MOE</span>
               <div class="input-field">

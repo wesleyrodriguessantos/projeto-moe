@@ -25,23 +25,8 @@ class Home extends BaseController
 
 	public function ambienteEmpregador()
 	{
+
 		return view('telaEmp');
-	}
-
-
-	/**
-	 * Salva o usuário na sessão (faz o login)
-	 */
-	private function setUsuario($usuario)
-	{
-
-		$data = [
-			'email' => $usuario['email'],
-			'tipo_usuario' => $usuario['tipo_usuario'],
-			'logado' => true
-		];
-
-		session()->set($data);
 	}
 
 	public function login_action()
@@ -62,10 +47,10 @@ class Home extends BaseController
 
 			if ($result) {
 				if (password_verify($request->getVar('senha'), $result['senha'])) {
-					$this->setUsuario($result); //realiza o login
 					session()->set('isLoggedIn', TRUE);
 
-					$idEst = $result['id_estagiario'];
+					$_SESSION['id_usuario'] = $result['id_estagiario'];
+					$_SESSION['tipo_usuario'] = $result['tipo_usuario'];
 
 					return redirect()->to('/estagiario')->with('success', 'Estagiário Logado com sucesso!');
 				} else {
@@ -76,11 +61,11 @@ class Home extends BaseController
 				$result2 = $modelEmp->where('email', $this->request->getVar('email'))->first();
 				if ($result2) {
 					if (password_verify($request->getVar('senha'), $result2['senha'])) {
-						$this->setUsuario($result2); //realiza o login
 
 						session()->set('isLoggedIn', TRUE);
 
-						$idEmp = $result2['id_empregador'];
+						$_SESSION['id_usuario'] = $result2['id_empregador'];
+						$_SESSION['tipo_usuario'] = $result2['tipo_usuario'];
 
 						return redirect()->to('/empregador')->with('success', 'Empregador Logado com sucesso!');
 					} else {

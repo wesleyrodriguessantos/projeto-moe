@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="indigo lighten-5">
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
@@ -69,45 +69,57 @@
       echo form_open('vagacontroller/novaVaga', 'data-parsley-validate');
       ?>
       <div class="row">
-        <div class="input-field">
-          <i class="material-icons prefix">person</i>
-          <label for="nome_vaga">Nome para a Vaga <span class="required">*</span></label>
-          <input type="text" class="validate" name="nome_vaga" id="nome_vaga" value="<?= old('nome_vaga') ?>" maxlength="80" required>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">description</i>
-          <label for="descricao_vaga">Descrição sobre a Vaga <span class="required">*</span></label>
-          <textarea type="text" class="materialize-textarea validate" name="descricao_vaga" id="descricao_vaga" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">school</i>
-          <label for="horas">Horas Semanais <span class="required">*</span></label>
-          <input type="text" class="validate" name="horas" id="horas" value="<?= old('horas') ?>" maxlength="80" required>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">school</i>
-          <label for="remuneracao">Remuneração Mensal <span class="required">*</span></label>
-          <input type="text" class="validate" name="remuneracao" id="remuneracao" value="<?= old('remuneracao') ?>" maxlength="80" required>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">date_range</i>
-          <label for="semestre">Semestre Minimo Requerido <span class="required">*</span></label>
-          <input type="number" class="validate" name="semestre" id="semestre" value="<?= old('semestre') ?>" required>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">description</i>
-          <label for="lista_atividades">Lista de Atividadaes <span class="required">*</span></label>
-          <textarea type="text" class="materialize-textarea validate" name="lista_atividades" id="lista_atividades" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
-        </div>
-        <div class="input-field">
-          <i class="material-icons prefix">description</i>
-          <label for="lista_habilidades">Lista de Habilidades <span class="required">*</span></label>
-          <textarea type="text" class="materialize-textarea validate" name="lista_habilidades" id="lista_habilidades" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
-        </div>
+        <div class="col s12 m10 card-wrapper">
+          <div class="card grey lighten-5">
+            <div class="card-content black-text">
+              <span class="card-title center-align">Formulário para Cadastro de Vagas - MOE</span>
+              <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <label for="nome_vaga">Nome para a Vaga <span class="required">*</span></label>
+                <input type="text" class="validate" name="nome_vaga" id="nome_vaga" value="<?= old('nome_vaga') ?>" maxlength="80" required>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">description</i>
+                <label for="descricao_vaga">Descrição sobre a Vaga <span class="required">*</span></label>
+                <textarea type="text" class="materialize-textarea validate" name="descricao_vaga" id="descricao_vaga" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">school</i>
+                <label for="horas">Horas Semanais <span class="required">*</span></label>
+                <input type="text" class="validate" name="horas" id="horas" value="<?= old('horas') ?>" maxlength="80" required>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">school</i>
+                <label for="remuneracao">Remuneração Mensal <span class="required">*</span></label>
+                <input type="text" class="validate" name="remuneracao" id="remuneracao" value="<?= old('remuneracao') ?>" maxlength="80" required>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">date_range</i>
+                <label for="semestre">Semestre Minimo Requerido <span class="required">*</span></label>
+                <input type="number" class="validate" name="semestre" id="semestre" value="<?= old('semestre') ?>" required>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">description</i>
+                <label for="lista_atividades">Lista de Atividadaes <span class="required">*</span></label>
+                <textarea type="text" class="materialize-textarea validate" name="lista_atividades" id="lista_atividades" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">description</i>
+                <label for="lista_habilidades">Lista de Habilidades <span class="required">*</span></label>
+                <textarea type="text" class="materialize-textarea validate" name="lista_habilidades" id="lista_habilidades" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
+              </div>
 
-        <button class="btn right btn-primario" type="submit">Cadastrar Vaga</button>
+              <label hidden for="id_empregadorVaga">Id Empregador</label>
+              <input hidden type="id_empregadorVaga" name="id_empregadorVaga" id="id_empregadorVaga" value="<?= $_SESSION['id_usuario'] ?>" required>
 
-        <?= form_close(); ?>
+              <div class="row">
+                <button class="btn right btn-primario" type="submit">Cadastrar Vaga</button>
+              </div>
+
+              <?= form_close(); ?>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>

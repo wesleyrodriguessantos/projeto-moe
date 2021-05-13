@@ -7,6 +7,8 @@ use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use App\Filters\Auth;
+use App\Filters\AuthEmp;
+use App\Filters\AuthEstag;
 
 class Filters extends BaseConfig
 {
@@ -21,6 +23,8 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
 		'auth' =>  Auth::class,
+		'authemp' => AuthEmp::class,
+		'authestag' => AuthEstag::class,
 	];
 
 	/**

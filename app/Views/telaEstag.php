@@ -11,7 +11,7 @@
   <title>Ambiente Estagiário</title>
 </head>
 
-<body>
+<body class="indigo lighten-5">
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
