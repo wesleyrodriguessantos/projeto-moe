@@ -67,8 +67,13 @@ class VagaController extends BaseController
       ]
     ];
 
-    if ('remuneracao' < '787,98') {
-      return redirect()->back()->withInput()->with('errors', 'Remuneração Informada está abaixo do Mínimo necessário!');
+    $hora = $this->request->getPost('horas');
+    $grana = $this->request->getPost('remuneracao');
+
+    if ($grana < "787.98") {
+      return redirect()->back()->withInput()->with('warning', 'Remuneração Informada está abaixo do Mínimo necessário!');
+    } else if ($hora === "30" && $grana < "1125.69") {
+      return redirect()->back()->withInput()->with('warning', 'Remuneração Informada está abaixo do Mínimo necessário para a quantidade de horas semanais!');
     } else {
 
       if ($this->validate($rulesVaga, $mensagens)) {
