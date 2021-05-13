@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS vagas
 id_vaga INT AUTO_INCREMENT PRIMARY KEY,
 nome_vaga VARCHAR(80) NOT NULL,
 lista_atividades TEXT NOT NULL,
-semestre CHAR(1) NOT NULL,
+semestre CHAR(2) NOT NULL,
 lista_habilidades TEXT NOT NULL,
 descricao_vaga TEXT  NOT NULL,
 horas VARCHAR(2),

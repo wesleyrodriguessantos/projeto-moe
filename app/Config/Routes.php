@@ -37,6 +37,8 @@ $routes->get('/login', 'Home::login');
 $routes->get('/sair', 'Home::logout');
 $routes->get('/estagiario', 'Home::ambienteEstagiario');
 $routes->get('/empregador', 'Home::ambienteEmpregador');
+$routes->get('/vagas', 'VagaController::index');
+$routes->get('/cadastro-vaga', 'VagaController::cadastrarVaga');
 
 /*
  * --------------------------------------------------------------------
