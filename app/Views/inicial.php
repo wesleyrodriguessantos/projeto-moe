@@ -34,8 +34,12 @@
   <?= $this->include('partials/alerts') ?>
 
   <main class="page">
-    <h2>Página Inicial</h2>
+    <div class="container">
+      <h2>Página Inicial</h2>
+    </div>
   </main>
+
+  <?= $this->include('partials/footer') ?>
 
   <script src="/resources/jquery-3.6.0.min.js"></script>
   <script src="/resources/materialize/materialize.min.js"></script>

@@ -35,6 +35,8 @@
     <h1>Você está no Ambiente do Estagiário!!</h1>
   </main>
 
+  <?= $this->include('partials/footer') ?>
+
   <script src="/resources/jquery-3.6.0.min.js"></script>
   <script src="/resources/materialize/materialize.min.js"></script>
   <script src="/resources/parsley/parsley.min.js"></script>

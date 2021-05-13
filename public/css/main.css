@@ -1,11 +1,22 @@
 @charset "UTF-8";
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
 nav {
   background-color: #622adb;
 }
 nav .nav-wrapper {
   padding: 0 20px;
 }
-
+main.page  {
+  /* min-height: calc(100vh - 130px); */
+  padding-top: 50px;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 50px;
+}
 .page {
   padding: 0 20px;
 }
@@ -152,3 +163,11 @@ span.required {
   }
 }
 
+.page-footer {
+  background-color: #622adb;
+  border-top: 1px solid #333;
+  bottom: 0;
+  left: 0;
+  position: relative;
+  width: 100%;
+}

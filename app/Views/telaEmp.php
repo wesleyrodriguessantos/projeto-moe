@@ -64,6 +64,7 @@
   <main class="page">
     <h1>Você está no Ambiente do Empregador!!</h1>
   </main>
+  <?= $this->include('partials/footer') ?>
 
   <script src="/resources/jquery-3.6.0.min.js"></script>
   <script src="/resources/materialize/materialize.min.js"></script>

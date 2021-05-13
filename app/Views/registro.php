@@ -171,6 +171,9 @@
     </div>
 
   </main>
+
+  <?= $this->include('partials/footer') ?>
+
   <script>
     $('#minicurriculo_estagiario').val('New Text');
     M.textareaAutoResize($('#minicurriculo_estagiario'));

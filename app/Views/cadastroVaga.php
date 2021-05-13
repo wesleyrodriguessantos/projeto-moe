@@ -10,7 +10,13 @@
   <link rel="stylesheet" href="/css/main.css">
 
   <title>Tela de Cadastro de Vagas - MOE</title>
-
+  <script>
+    window.onload = function() {
+      $(document).ready(function() {
+        $('select').formSelect();
+      });
+    }
+  </script>
 </head>
 
 <body class="indigo lighten-5">
@@ -53,11 +59,16 @@
                 <label for="descricao_vaga">Descrição sobre a Vaga <span class="required">*</span></label>
                 <textarea type="text" class="materialize-textarea validate" name="descricao_vaga" id="descricao_vaga" value="<?= old('minicurriculo_estagiario') ?>" required></textarea>
               </div>
+
               <div class="input-field">
                 <i class="material-icons prefix">school</i>
-                <label for="horas">Horas Semanais <span class="required">*</span></label>
-                <input type="text" class="validate" name="horas" id="horas" value="<?= old('horas') ?>" maxlength="80" required>
+                <select>
+                  <option value="">Carga Horária Semanal</option>
+                  <option value="20">20 Horas</option>
+                  <option value="30">30 Horas</option>
+                </select>
               </div>
+
               <div class="input-field">
                 <i class="material-icons prefix">school</i>
                 <label for="remuneracao">Remuneração Mensal <span class="required">*</span></label>
@@ -93,6 +104,8 @@
       </div>
     </div>
   </main>
+  <?= $this->include('partials/footer') ?>
+
   <script>
     $('#lista_habilidades').val('New Text');
     M.textareaAutoResize($('#lista_habilidades'));

@@ -34,8 +34,7 @@
   <?= $this->include('partials/alerts') ?>
 
   <main class="page">
-    <h2>Página de Login</h2>
-    <div class="registro">
+    <div class="registro center">
       <?php
       helper('form');
       echo form_open('home/login_action');
@@ -64,7 +63,9 @@
       </div>
       <?= form_close(); ?>
     </div>
+
   </main>
+  <?= $this->include('partials/footer') ?>
 
   <script src="/resources/jquery-3.6.0.min.js"></script>
   <script src="/resources/materialize/materialize.min.js"></script>
