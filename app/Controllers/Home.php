@@ -63,6 +63,9 @@ class Home extends BaseController
 			if ($result) {
 				if (password_verify($request->getVar('senha'), $result['senha'])) {
 					$this->setUsuario($result); //realiza o login
+					session()->set('isLoggedIn', TRUE);
+
+					$idEst = $result['id_estagiario'];
 
 					return redirect()->to('/estagiario')->with('success', 'Estagiário Logado com sucesso!');
 				} else {
@@ -74,6 +77,10 @@ class Home extends BaseController
 				if ($result2) {
 					if (password_verify($request->getVar('senha'), $result2['senha'])) {
 						$this->setUsuario($result2); //realiza o login
+
+						session()->set('isLoggedIn', TRUE);
+
+						$idEmp = $result2['id_empregador'];
 
 						return redirect()->to('/empregador')->with('success', 'Empregador Logado com sucesso!');
 					} else {

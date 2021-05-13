@@ -17,11 +17,15 @@ class VagaController extends BaseController
 
   public function cadastrarVaga()
   {
-    return view('cadastroVaga');
+    if (session()->isLoggedIn === TRUE) {
+
+      return view('cadastroVaga');
+    }
   }
 
   public function novaVaga()
   {
+
     // Regras para a validação do Cadastro de uma nova Vaga
     $rulesVaga = [
       'nome_vaga' => 'required|max_length[80]',
