@@ -67,37 +67,42 @@ class VagaController extends BaseController
       ]
     ];
 
-    if ($this->validate($rulesVaga, $mensagens)) {
+    if ('remuneracao' < '787,98') {
+      return redirect()->back()->withInput()->with('errors', 'Remuneração Informada está abaixo do Mínimo necessário!');
+    } else {
 
-      $db = db_connect();
+      if ($this->validate($rulesVaga, $mensagens)) {
 
-      $db->transStart(); //inicia a transação
+        $db = db_connect();
 
-      $modelVaga = new Vagas();
+        $db->transStart(); //inicia a transação
 
-      $vaga['nome_vaga'] = $this->request->getPost('nome_vaga');
-      $vaga['lista_atividades'] = $this->request->getPost('lista_atividades');
-      $vaga['semestre'] = $this->request->getPost('semestre');
-      $vaga['lista_habilidades'] = $this->request->getPost('lista_habilidades');
-      $vaga['descricao_vaga'] = $this->request->getPost('descricao_vaga');
-      $vaga['horas'] = $this->request->getPost('horas');
-      $vaga['remuneracao'] = $this->request->getPost('remuneracao');
-      $vaga['id_empregadorVaga'] = $this->request->getPost('id_empregadorVaga');
+        $modelVaga = new Vagas();
 
-      $modelVaga->save($vaga);
+        $vaga['nome_vaga'] = $this->request->getPost('nome_vaga');
+        $vaga['lista_atividades'] = $this->request->getPost('lista_atividades');
+        $vaga['semestre'] = $this->request->getPost('semestre');
+        $vaga['lista_habilidades'] = $this->request->getPost('lista_habilidades');
+        $vaga['descricao_vaga'] = $this->request->getPost('descricao_vaga');
+        $vaga['horas'] = $this->request->getPost('horas');
+        $vaga['remuneracao'] = $this->request->getPost('remuneracao');
+        $vaga['id_empregadorVaga'] = $this->request->getPost('id_empregadorVaga');
 
-      $db->transComplete(); //finaliza a transação
+        $modelVaga->save($vaga);
 
-      if ($db->transStatus() == false) {
+        $db->transComplete(); //finaliza a transação
 
-        return redirect()->back()->withInput()->with('warning', 'Não foi possível salvar os dados da vaga no momento. Tente novamente mais tarde.');
-      } else {
+        if ($db->transStatus() == false) {
 
-        return redirect()->to('/empregador')->with('success', 'Vaga Cadastrada com Sucesso! Obrigado por confiar em nossos serviços!');
+          return redirect()->back()->withInput()->with('warning', 'Não foi possível salvar os dados da vaga no momento. Tente novamente mais tarde.');
+        } else {
+
+          return redirect()->to('/empregador')->with('success', 'Vaga Cadastrada com Sucesso! Obrigado por confiar em nossos serviços!');
+        }
+      } else { //retorna ao formulário de registro caso a validação falhe
+
+        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
       }
-    } else { //retorna ao formulário de registro caso a validação falhe
-
-      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
   }
 }

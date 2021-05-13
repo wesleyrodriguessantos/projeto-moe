@@ -43,7 +43,7 @@
         <div class="col s12 m10 l8 card-wrapper">
           <div class="card grey lighten-5">
             <div class="card-content black-text">
-              <span class="card-title center-align">Login - MOE</span>
+              <span class="card-title center-align"><b>Login - MOE</b></span>
               <div class="input-field">
                 <i class="material-icons prefix">email</i>
                 <label for="email">E-mail</label>

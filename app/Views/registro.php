@@ -42,7 +42,7 @@
         <div class="col s12 m10 l8 card-wrapper">
           <div class="card grey lighten-5">
             <div class="card-content black-text">
-              <span class="card-title center-align">Criar conta</span>
+              <span class="card-title center-align"><b>Criar conta</b></span>
               <div class="input-field">
                 <i class="material-icons prefix">email</i>
                 <label for="email">E-mail <span class="required">*</span></label>
@@ -68,7 +68,7 @@
 
               <div class="tipo-conta">
 
-                <span class="card-title secondary center-align">Tipo da Conta</span>
+                <span class="card-title secondary center-align"><b>Tipo da Conta</b></span>
 
                 <div class="row">
                   <p class="col s6 right-align">
