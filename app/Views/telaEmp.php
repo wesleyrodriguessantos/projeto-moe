@@ -18,51 +18,72 @@
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/cadastrar">Cadastrar novo Usuário</a></li>
+          <li><a href="#"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
           <li><a href="/sair">Sair</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul class="sidenav" id="sidenav">
-    <li><a href="/cadastrar">Cadastrar novo Usuário</a></li>
+    <li><a href="#"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
     <li><a href="/sair">Sair</a></li>
   </ul>
 
-  <?php if (session()->has('success')) : ?>
-    <div class="materialert success">
-      <div class="material-icons">check</div>
-      <?= session('success') ?>
-      <button type="button" class="close-alert">×</button>
-    </div>
-  <?php endif ?>
+  <?= $this->include('partials/alerts') ?>
 
-  <?php if (session()->has('warning')) : ?>
-    <div class="materialert warning">
-      <div class="material-icons">warning</div>
-      <?= session('warning') ?>
-      <button type="button" class="close-alert">×</button>
-    </div>
-  <?php endif ?>
+  <main class="page" style="padding-top: 12px;">
+    <h2 class="center" style="margin-bottom: 30px;">Seja Bem-vindo(a) <?= $_SESSION['nome'] ?>!!</h2>
 
-  <?php if (session()->has('errors')) : ?>
-    <div class="materialert error">
-      <div class="material-icons">error</div>
-      <?php if (is_array(session('errors'))) : ?>
-        <ul>
-          <?php foreach (session('errors') as $error) : ?>
-            <li><?= $error ?></li>
-          <?php endforeach ?>
-        </ul>
-      <?php else : ?>
-        <?= session('errors') ?>
-      <?php endif ?>
-      <button type="button" class="close-alert">×</button>
-    </div>
-  <?php endif ?>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Alterar dados Cadastrais</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">mode_edit</i>Alterar</a>
+            </div>
+          </div>
+        </div>
 
-  <main class="page">
-    <h1>Você está no Ambiente do Empregador!!</h1>
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Cadastar Nova Vaga de Estagio</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large" href="/cadastro-vaga"><i class="material-icons right">web</i>Cadastrar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Editar Oportunidade de Estágio</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">edit</i>Editar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Estagiarios Interessados na Empresa</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">search</i>Consultar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
   <?= $this->include('partials/footer') ?>
 

@@ -51,6 +51,7 @@ class Home extends BaseController
 
 					$_SESSION['id_usuario'] = $result['id_estagiario'];
 					$_SESSION['tipo_usuario'] = $result['tipo_usuario'];
+					$_SESSION['nome'] = $result['nome_estagiario'];
 
 					return redirect()->to('/estagiario')->with('success', 'Estagiário Logado com sucesso!');
 				} else {
@@ -66,6 +67,7 @@ class Home extends BaseController
 
 						$_SESSION['id_usuario'] = $result2['id_empregador'];
 						$_SESSION['tipo_usuario'] = $result2['tipo_usuario'];
+						$_SESSION['nome'] = $result2['pessoa_de_contato'];
 
 						return redirect()->to('/empregador')->with('success', 'Empregador Logado com sucesso!');
 					} else {
