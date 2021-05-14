@@ -18,21 +18,71 @@
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/cadastrar">Cadastrar novo Usuário</a></li>
+          <li><a href="#"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
           <li><a href="/sair">Sair</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul class="sidenav" id="sidenav">
-    <li><a href="/cadastrar">Cadastrar novo Usuário</a></li>
+    <li><a href="#"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
     <li><a href="/sair">Sair</a></li>
   </ul>
 
   <?= $this->include('partials/alerts') ?>
+  <main class="page" style="padding-top: 12px;">
+    <h2 class="center" style="margin-bottom: 30px;">Seja Bem-vindo(a) <?= $_SESSION['nome'] ?>!!</h2>
 
-  <main class="page">
-    <h1>Você está no Ambiente do Estagiário!!</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Alterar Dados Cadastrais</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">mode_edit</i>Alterar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Consultar Oportunidades de Estágio</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large" href="/vagas"><i class="material-icons right">web</i>Consultar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Consultar e Seguir Empresas Cadastradas</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">home</i>Consultar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l6">
+          <div class="card deep-purple accent-3 darken-1 center">
+            <div class="card-content white-text">
+              <span class="card-title">Consultar/Editar Empresas que está Seguindo</span>
+            </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn-large"><i class="material-icons right">short_text</i>Consultar/Editar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <?= $this->include('partials/footer') ?>
