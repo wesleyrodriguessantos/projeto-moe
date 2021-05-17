@@ -39,7 +39,7 @@
       echo form_open('home/novoestagiario', 'id="form1" data-parsley-validate');
       ?>
       <div class="row">
-        <div class="col s12 m10 l8 card-wrapper">
+        <div class="col s12 m10 card-wrapper">
           <div class="card grey lighten-5">
             <div class="card-content black-text">
               <span class="card-title center-align"><b>Criar conta</b></span>

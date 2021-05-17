@@ -83,44 +83,26 @@
         <div class="col s12">
           <?php if (count($vagas) > 0) : ?>
             <?php foreach ($vagas as $vaga) : ?>
-
               <div class="card deep-purple darken-2 center">
                 <div class="card-content white-text">
                   <span class="card-title"><?= $vaga['nome_vaga'] ?></span>
                   <p><b>Descrição da Vaga</b><br>
                     <?= limitText($vaga['descricao_vaga'], 25) ?>
                   </p>
+                  <p><b>Lista de Atividades</b><br>
+                    <?= limitText($vaga['lista_atividades'], 25) ?>
+                  </p>
+                  <p><b>Lista de Habilidades</b><br>
+                    <?= limitText($vaga['lista_habilidades'], 25) ?>
+                  </p>
+                  <p><b>Semestre Mínimo Requerido:</b> <?= $vaga['semestre'] ?>º</p>
+                  <p><b>Horas Semanais:</b> <?= $vaga['horas'] ?> Horas</p>
+                  <p><b>Remuneração:</b> R$ <?= $vaga['remuneracao'] ?></p>
                 </div>
-                <!-- Modal -->
-                <div id="modal1" class="modal modal-fixed-footer">
-                  <div class="modal-content">
-                    <?php foreach ($vagas as $vaga) : ?>
-                      <p><b>Descrição da Vaga</b><br>
-                        <?= $vaga['descricao_vaga'] ?>
-                      </p>
-                      <p><b>Lista de Atividades</b><br>
-                        <?= $vaga['lista_atividades'] ?>
-                      </p>
-                      <p><b>Lista de Habilidades</b><br>
-                        <?= $vaga['lista_habilidades'] ?>
-                      </p>
-                      <p><b>Semestre Mínimo Requerido:</b> <?= $vaga['semestre'] ?>º</p>
-                      <p><b>Horas Semanais:</b> <?= $vaga['horas'] ?> Horas</p>
-                      <p><b>Remuneração:</b> R$ <?= $vaga['remuneracao'] ?></p>
-                    <?php endforeach; ?>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
-                  </div>
-                </div>
-
                 <div class="card-action">
-                  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Ver mais detalhes sobre essa vaga
-                    <i class="material-icons right">remove_red_eye</i>
-                  </a>
-                  <button class="btn waves-effect waves-light" type="submit" name="action">
+                  <a class="btn waves-effect waves-light" href="vaga/<?= $vaga['id_vaga'] ?>">
                     Tenho interesse nessa vaga<i class="material-icons right">send</i>
-                  </button>
+                  </a>
                 </div>
               </div> <!-- Fim do Card -->
             <?php endforeach; ?>

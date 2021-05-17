@@ -21,6 +21,17 @@ class VagaController extends BaseController
     ]);
   }
 
+  public function vaga($id)
+  {
+    $vagasModel = new Vagas();
+
+    return view('interesseVaga', [
+      'vaga' => $vagasModel->find($id)
+    ]);
+
+    return view('interesseVaga');
+  }
+
   public function cadastrarVaga()
   {
     return view('cadastroVaga');
