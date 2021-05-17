@@ -10,9 +10,15 @@ use App\Models\Vagas;
 
 class VagaController extends BaseController
 {
+
   public function index()
   {
-    return view('vagas');
+    $vagasModel = new Vagas();
+
+    return view('vagas', [
+      'vagas' => $vagasModel->paginate(20),
+      'pager' => $vagasModel->pager
+    ]);
   }
 
   public function cadastrarVaga()

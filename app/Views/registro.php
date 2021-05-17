@@ -15,7 +15,7 @@
 
 <body class="indigo lighten-5">
   <div class="navbar-fixed">
-    <nav>
+    <nav id="navprincipal">
       <div class="nav-wrapper">
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
@@ -104,6 +104,11 @@
                     <i class="material-icons prefix">date_range</i>
                     <label for="ano_ingresso_estagiario">Ano de Ingresso <span class="required">*</span></label>
                     <input type="number" class="validate" name="ano_ingresso_estagiario" id="ano_ingresso_estagiario" value="<?= old('ano_ingresso_estagiario') ?>" required>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">access_time</i>
+                    <label for="integralizacao">Integralização Atual <span class="required">*</span></label>
+                    <input type="number" class="validate" name="integralizacao" id="integralizacao" min="0" max="100" value="<?= old('integralizacao') ?>" required>
                   </div>
                   <div class="input-field">
                     <i class="material-icons prefix">description</i>

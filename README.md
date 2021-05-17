@@ -36,6 +36,7 @@ email VARCHAR(100) UNIQUE NOT NULL,
 senha VARCHAR(255),
 curso_estagiario VARCHAR(80) NOT NULL,
 ano_ingresso_estagiario YEAR NOT NULL,
+integralizacao INT NOT NULL,
 minicurriculo_estagiario TEXT,
 status_estagiario CHAR DEFAULT '1',
 tipo_usuario CHAR DEFAULT '1'

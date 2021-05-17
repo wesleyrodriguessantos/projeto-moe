@@ -15,7 +15,7 @@
 
 <body class="indigo lighten-5">
   <div class="navbar-fixed">
-    <nav>
+    <nav id="navprincipal">
       <div class="nav-wrapper">
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>

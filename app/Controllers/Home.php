@@ -41,9 +41,7 @@ class Home extends BaseController
 		if ($this->validate($regras)) {
 			$modelEst = new Estagiario();
 
-
 			$result = $modelEst->where('email', $this->request->getVar('email'))->first();
-
 
 			if ($result) {
 				if (password_verify($request->getVar('senha'), $result['senha'])) {
@@ -52,6 +50,7 @@ class Home extends BaseController
 					$_SESSION['id_usuario'] = $result['id_estagiario'];
 					$_SESSION['tipo_usuario'] = $result['tipo_usuario'];
 					$_SESSION['nome'] = $result['nome_estagiario'];
+					$_SESSION['integralizacao'] = $result['integralizacao'];
 
 					return redirect()->to('/estagiario')->with('success', 'Estagiário Logado com sucesso!');
 				} else {
@@ -96,6 +95,7 @@ class Home extends BaseController
 			'nome_estagiario' => 'required|string|max_length[80]',
 			'curso_estagiario' => 'required|string|max_length[80]',
 			'ano_ingresso_estagiario' => 'required|numeric',
+			'integralizacao' => 'required|numeric',
 			'minicurriculo_estagiario' => 'required|string',
 		];
 
@@ -127,6 +127,10 @@ class Home extends BaseController
 				'required' => 'Informe o ano de ingresso!',
 				'numeric' => 'O ano de Ingresso precisa ser um ano válido - Ex:(2015, 2020, 2011).'
 			],
+			'integralizacao' => [
+				'required' => 'Informe a Porcentagem de Sua Integralização atual no Curso!',
+				'numeric' => 'A integralização deve estar entre 1 e 100%'
+			],
 			'minicurriculo_estagiario' => [
 				'required' => 'Informe um minicurriculo!',
 				'string' => 'O minicurriculo informado deve ser em formato de texto!',
@@ -147,6 +151,7 @@ class Home extends BaseController
 			$estagiario['senha'] = password_hash($this->request->getPost('senha'), PASSWORD_DEFAULT);
 			$estagiario['curso_estagiario'] = $this->request->getPost('curso_estagiario');
 			$estagiario['ano_ingresso_estagiario'] = $this->request->getPost('ano_ingresso_estagiario');
+			$estagiario['integralizacao'] = $this->request->getPost('integralizacao');
 			$estagiario['minicurriculo_estagiario'] = $this->request->getPost('minicurriculo_estagiario');
 
 			$modelEstagiario->save($estagiario);

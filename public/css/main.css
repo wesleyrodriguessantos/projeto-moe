@@ -4,7 +4,7 @@ html, body {
   padding: 0;
   height: 100vh;
 }
-nav {
+nav#navprincipal {
   background-color: #622adb;
 }
 nav .nav-wrapper {
