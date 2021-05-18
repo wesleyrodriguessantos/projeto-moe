@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -41,7 +41,7 @@
               <span class="card-title">Alterar Dados Cadastrais</span>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn-large"><i class="material-icons right">mode_edit</i>Alterar</a>
+              <a href="/estagiario/editar/<?= $_SESSION['id_usuario'] ?>" class="waves-effect waves-light btn-large"><i class="material-icons right">mode_edit</i>Alterar</a>
             </div>
           </div>
         </div>

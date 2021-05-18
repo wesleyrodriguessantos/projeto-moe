@@ -24,6 +24,16 @@ class UserController extends BaseController
     return view('telaEstag');
   }
 
+  public function editEstagiario($id)
+  {
+    $estagiarioModel = new Estagiario();
+    $_SESSION['id_parametrizado'] = $id;
+
+    return view('editEstag', [
+      'estagiario' => $estagiarioModel->find($id)
+    ]);
+  }
+
   public function ambienteEmpregador()
   {
 
