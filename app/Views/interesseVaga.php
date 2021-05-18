@@ -32,14 +32,14 @@
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
+          <li><a href="/estagiario"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
           <li><a href="/sair">Sair</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul class="sidenav" id="sidenav">
-    <li><a href="#"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
+    <li><a href="/estagiario"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
     <li><a href="/sair">Sair</a></li>
   </ul>
 

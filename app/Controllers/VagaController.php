@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Empregador;
 use App\Models\Vagas;
 
 class VagaController extends BaseController
@@ -27,6 +28,15 @@ class VagaController extends BaseController
     ]);
 
     return view('interesseVaga');
+  }
+
+  public function consultaEmpresas() {
+    $empresasModel = new Empregador();
+
+    return view('consultaempresas', [
+      'empresas' => $empresasModel->paginate(20),
+      'pager' => $empresasModel->pager
+    ]);
   }
 
   public function cadastrarVaga()

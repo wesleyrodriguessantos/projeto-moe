@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <style>
     p b {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     p {
@@ -19,6 +19,11 @@
 
     nav {
       background-color: #512da8;
+    }
+
+    h3 {
+      margin: 0 0 10px 0;
+      font-size: 2.5rem;
     }
 
     ul.pagination li.active {
@@ -33,14 +38,7 @@
       color: white;
     }
   </style>
-  <script>
-    window.onload = function() {
-      $(document).ready(function() {
-        $('.modal').modal();
-      });
-    }
-  </script>
-  <title>Visualizar Vagas</title>
+  <title>Visualizar Empresas</title>
 </head>
 
 <body class="indigo lighten-5">
@@ -63,53 +61,46 @@
 
   <?= $this->include('partials/alerts') ?>
 
-  <?php
-  function limitText($text, $limit)
-  {
-    if (str_word_count($text, 0) > $limit) {
-      $words = str_word_count($text, 2);
-      $pos   = array_keys($words);
-      $text  = substr($text, 0, $pos[$limit]) . '...';
-    }
-    return $text;
-  }
-  ?>
-
   <main class="page" style="padding-top: 0px;">
-    <h2 class="center" style="margin-bottom: 30px;">Últimas Vagas de Estágio Cadastradas</h2>
+    <h2 class="center" style="margin-bottom: 30px;">Empresas Cadastradas</h2>
 
     <div class="container">
       <div class="row">
         <div class="col s12">
-          <?php if (count($vagas) > 0) :
-            arsort($vagas);
-          ?>
-            <?php foreach ($vagas as $vaga) : ?>
+          <?php if (count($empresas) > 0) : ?>
+            <?php foreach ($empresas as $empresa) : ?>
               <div class="card deep-purple darken-2 center">
                 <div class="card-content white-text">
-                  <span class="card-title"><?= $vaga['nome_vaga'] ?></span>
-                  <p><b>Descrição da Vaga</b><br>
-                    <?= limitText($vaga['descricao_vaga'], 25) ?>
+                  <h3><?= $empresa['nome_empresa'] ?></h3>
+                  <hr>
+                  <p><b>Descrição da Empresa</b><br>
+                    <?= $empresa['descricao_empresa'] ?>
                   </p>
-                  <p><b>Lista de Atividades</b><br>
-                    <?= limitText($vaga['lista_atividades'], 25) ?>
+                  <p><b>Email</b><br>
+                    <a href="mailto:<?= $empresa['email'] ?>"><?= $empresa['email'] ?></a>
                   </p>
-                  <p><b>Lista de Habilidades</b><br>
-                    <?= limitText($vaga['lista_habilidades'], 25) ?>
+                  <p><b>Endereço</b><br>
+                    <?= $empresa['endereco_empresa'] ?>
                   </p>
-                  <p><b>Semestre Mínimo Requerido:</b> <?= $vaga['semestre'] ?>º</p>
-                  <p><b>Horas Semanais:</b> <?= $vaga['horas'] ?> Horas</p>
-                  <p><b>Remuneração:</b> R$ <?= $vaga['remuneracao'] ?></p>
+                  <p><b>Pessoa de Contato</b><br>
+                    <?= $empresa['pessoa_de_contato'] ?>
+                  </p>
+                  <p><b>Produtos/Serviços que a empresa oferece:</b><br>
+                    <?= $empresa['produtos_empresa'] ?>
+                  </p>
                 </div>
-                <div class="card-action">
-                  <a class="btn waves-effect waves-light" href="vaga/<?= $vaga['id_vaga'] ?>">
-                    Tenho interesse nessa vaga<i class="material-icons right">send</i>
-                  </a>
+                <div class="card-action" style="text-align: right">
+                  <div>
+                    <label>
+                      <input type="checkbox">
+                      <span>Seguir empresa</span>
+                    </label>
+                  </div>
                 </div>
               </div> <!-- Fim do Card -->
             <?php endforeach; ?>
           <?php else : ?>
-            <h2 class="center-align">Nenhuma Vaga foi encontrada!</h2>
+            <h2 class="center-align">Nenhuma Empresa foi Cadastrada ainda!</h2>
           <?php endif; ?>
         </div>
 
