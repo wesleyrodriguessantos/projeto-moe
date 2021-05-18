@@ -35,33 +35,30 @@
 
   <main class="page">
     <div class="registro center">
-      <?php
-      helper('form');
-      echo form_open('home/login_action');
-      ?>
-      <div class="row">
-        <div class="col s12 m10 l8 card-wrapper">
-          <div class="card grey lighten-5">
-            <div class="card-content black-text">
-              <span class="card-title center-align"><b>Login - MOE</b></span>
-              <div class="input-field">
-                <i class="material-icons prefix">email</i>
-                <label for="email">E-mail</label>
-                <input id="email" class="validate" type="email" name="email" value="<?= old('email') ?>" maxlength="100" required>
-              </div>
+      <form action="/login_action" method="POST">
+        <div class="row">
+          <div class="col s12 m10 l8 card-wrapper">
+            <div class="card grey lighten-5">
+              <div class="card-content black-text">
+                <span class="card-title center-align"><b>Login - MOE</b></span>
+                <div class="input-field">
+                  <i class="material-icons prefix">email</i>
+                  <label for="email">E-mail</label>
+                  <input id="email" class="validate" type="email" name="email" value="<?= old('email') ?>" maxlength="100" required>
+                </div>
 
-              <div class="input-field">
-                <i class="material-icons prefix">password</i>
-                <label for="senha">Senha</label>
-                <input id="senha" class="validate" type="password" name="senha" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" required>
-              </div>
+                <div class="input-field">
+                  <i class="material-icons prefix">password</i>
+                  <label for="senha">Senha</label>
+                  <input id="senha" class="validate" type="password" name="senha" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" required>
+                </div>
 
-              <button class="btn btn-primario" type="submit">Entrar</button>
+                <button class="btn btn-primario" type="submit">Entrar</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <?= form_close(); ?>
+      </form>
     </div>
 
   </main>

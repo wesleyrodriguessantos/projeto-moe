@@ -32,11 +32,14 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/cadastrar', 'Home::registrar');
-$routes->get('/login', 'Home::login');
-$routes->get('/sair', 'Home::logout');
-$routes->get('/estagiario', 'Home::ambienteEstagiario', ['filter' => 'authestag']);
-$routes->get('/empregador', 'Home::ambienteEmpregador', ['filter' => 'authemp']);
+$routes->get('/cadastrar', 'UserController::registrar');
+$routes->get('/login', 'UserController::login');
+$routes->post('/login_action', 'UserController::login_action');
+$routes->get('/sair', 'UserController::logout');
+$routes->post('/novoestagiario', 'UserController::novoEstagiario');
+$routes->post('/novoempregador', 'UserController::novoEmpregador');
+$routes->get('/estagiario', 'UserController::ambienteEstagiario', ['filter' => 'authestag']);
+$routes->get('/empregador', 'UserController::ambienteEmpregador', ['filter' => 'authemp']);
 $routes->get('/vagas', 'VagaController::index', ['filter' => 'authestag']);
 $routes->add('/vaga/(:num)', 'VagaController::vaga/$1', ['filter' => 'authestag']);
 $routes->get('/cadastro-vaga', 'VagaController::cadastrarVaga', ['filter' => 'authemp']);

@@ -3,9 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Controllers\Home;
-use App\Models\Empregador;
-use App\Models\Estagiario;
 use App\Models\Vagas;
 
 class VagaController extends BaseController
