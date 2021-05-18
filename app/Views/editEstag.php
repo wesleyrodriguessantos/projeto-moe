@@ -39,29 +39,29 @@
   <?php else : ?>
     <main class="page">
       <div class="registro">
-        <form action="/estagio/store" method="POST" data-parsley-validate>
+        <form action="/estagio/edit/<?= $_SESSION['id_usuario'] ?>" method="POST" data-parsley-validate>
           <div class="row">
             <div class="col s12 m10 card-wrapper">
               <div class="card grey lighten-5">
                 <div class="card-content black-text">
-                  <span class="card-title center-align"><b>Criar conta</b></span>
-                  <div class="input-field">
+                  <span class="card-title center-align"><b>Atualizar Registro</b></span>
+                  <!-- <div class="input-field">
                     <i class="material-icons prefix">email</i>
                     <label for="email">E-mail <span class="required">*</span></label>
-                    <input id="email" class="validate" type="email" name="email" value="<?= $estagiario['email'] ?>" maxlength="100" required>
+                    <input id="email" class="validate" type="email" name="email" value="" maxlength="100" required>
                     <span class="helper-text" data-error="incorreto" data-success="correto"></span>
-                  </div>
+                  </div> -->
                   <div class="row">
                     <div class="input-field col s12 m6">
                       <i class="material-icons prefix">password</i>
                       <label for="senha">Senha <span class="required">*</span></label>
-                      <input id="senha" class="validate" type="password" name="senha" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" value="<?= $estagiario['senha'] ?>" required>
+                      <input id="senha" class="validate" type="password" name="senha" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" required>
                       <span class="helper-text" data-error="incorreto" data-success="correto"></span>
                     </div>
                     <div class="input-field col s12 m6 senha-confirm">
                       <label for="senha_confirm">Confirme a senha <span class="required">*</span></label>
-                      <input id="senha_confirm" class="validate" type="password" name="senha_confirm" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" data-parsley-equalto="#senha" data-parsley-trigger="focusout" value="<?= $estagiario['senha'] ?> required>
-                    <span class=" helper-text" data-error="incorreto" data-success="correto"></span>
+                      <input id="senha_confirm" class="validate" type="password" name="senha_confirm" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}" minlength="6" maxlength="40" data-parsley-equalto="#senha" data-parsley-trigger="focusout" required>
+                      <span class=" helper-text" data-error="incorreto" data-success="correto"></span>
                     </div>
                   </div>
                   <div class="descricao-senha">
@@ -94,9 +94,7 @@
                       <div class="input-field">
                         <i class="material-icons prefix">description</i>
                         <label for="minicurriculo_estagiario">Minicurrículo <span class="required">*</span></label>
-                        <textarea type="text" class="materialize-textarea validate" name="minicurriculo_estagiario" id="minicurriculo_estagiario" required>
-                      <?= $estagiario['minicurriculo_estagiario'] ?>
-                      </textarea>
+                        <textarea type="text" class="materialize-textarea validate" name="minicurriculo_estagiario" id="minicurriculo_estagiario" required><?= $estagiario['minicurriculo_estagiario'] ?></textarea>
                       </div>
 
                       <button class="btn right btn-primario" type="submit">Atualizar Dados</button>

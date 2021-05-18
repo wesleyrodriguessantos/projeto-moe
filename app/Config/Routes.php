@@ -40,7 +40,7 @@ $routes->post('/novoestagiario', 'UserController::novoEstagiario');
 $routes->post('/novoempregador', 'UserController::novoEmpregador');
 $routes->get('/estagiario', 'UserController::ambienteEstagiario', ['filter' => 'authestag']);
 $routes->get('/estagiario/editar/(:num)', 'UserController::editEstagiario/$1', ['filter' => 'authestag']);
-$routes->get('/estagio/store', 'UserController::estagStore', ['filter' => 'authestag']);
+$routes->post('/estagio/edit/(:num)', 'UserController::estagStore/$1', ['filter' => 'authestag']);
 $routes->get('/empregador', 'UserController::ambienteEmpregador', ['filter' => 'authemp']);
 $routes->get('/vagas', 'VagaController::index', ['filter' => 'authestag']);
 $routes->get('/empresas', 'VagaController::consultaEmpresas', ['filter' => 'authestag']);

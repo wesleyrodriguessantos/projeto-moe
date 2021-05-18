@@ -34,6 +34,83 @@ class UserController extends BaseController
     ]);
   }
 
+  public function estagStore($id)
+  {
+
+    $rulesEstagiario = [
+      'senha' => 'required|min_length[6]|max_length[50]|regex_match[/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/]',
+      'nome_estagiario' => 'required|string|max_length[80]',
+      'curso_estagiario' => 'required|string|max_length[80]',
+      'ano_ingresso_estagiario' => 'required|numeric',
+      'integralizacao' => 'required|numeric',
+      'minicurriculo_estagiario' => 'required|string',
+    ];
+
+    //Mensagens de Erro Personalizadas
+    $mensagens = [
+      'senha' => [
+        'required' => 'O cadastro de uma senha é obrigatório!',
+        'min_length' => 'A senha informada é muito pequena!',
+        'max_length' => 'A senha informada é muito grande!',
+        'regex_match' => 'A senha deve possuir ao menos 6 caracteres, uma letra maiúscula, um número e um caractere especial.'
+      ],
+      'nome_estagiario' => [
+        'required' => 'Informe o seu Nome completo!',
+        'string' => 'O nome precisa ser uma string! Informe seu nome da forma correta!',
+        'max_length' => 'O nome informado é muito grande!'
+      ],
+      'curso_estagiario' => [
+        'required' => 'Informe o Nome do seu Curso!',
+        'string' => 'O nome do curso precisa ser uma string! Informe o nome da forma correta!',
+        'max_length' => 'O nome informado é muito grande!'
+      ],
+      'ano_ingresso_estagiario' => [
+        'required' => 'Informe o ano de ingresso!',
+        'numeric' => 'O ano de Ingresso precisa ser um ano válido - Ex:(2015, 2020, 2011).'
+      ],
+      'integralizacao' => [
+        'required' => 'Informe a Porcentagem de Sua Integralização atual no Curso!',
+        'numeric' => 'A integralização deve estar entre 1 e 100%'
+      ],
+      'minicurriculo_estagiario' => [
+        'required' => 'Informe um minicurriculo!',
+        'string' => 'O minicurriculo informado deve ser em formato de texto!',
+      ]
+    ];
+
+    if ($this->validate($rulesEstagiario, $mensagens)) {
+
+      $db = db_connect();
+
+      $db->transStart(); //inicia a transação
+
+      $data = [
+        'nome_estagiario' => $this->request->getPost('nome_estagiario'),
+        'senha' => password_hash($this->request->getPost('senha'), PASSWORD_DEFAULT),
+        'curso_estagiario' => $this->request->getPost('curso_estagiario'),
+        'ano_ingresso_estagiario' => $this->request->getPost('ano_ingresso_estagiario'),
+        'integralizacao' => $this->request->getPost('integralizacao'),
+        'minicurriculo_estagiario' => $this->request->getPost('minicurriculo_estagiario'),
+      ];
+
+      $modelEstagiario = new Estagiario();
+      $modelEstagiario->update($id, $data);
+
+      $db->transComplete(); //finaliza a transação
+
+      if ($db->transStatus() == false) {
+
+        return redirect()->back()->withInput()->with('warning', 'Não foi possível salvar os dados no momento. Tente novamente mais tarde.');
+      } else {
+
+        return redirect()->to('/estagiario')->with('success', 'Cadastro atualizado com Sucesso!!');
+      }
+    } else { //retorna ao formulário de registro caso a validação falhe
+
+      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    }
+  }
+
   public function ambienteEmpregador()
   {
 
