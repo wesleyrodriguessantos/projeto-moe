@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/resources/materialize/materialize.min.css">
   <link rel="stylesheet" href="/css/main.css">
 
-  <title>Tela de atualização de Cadastro do Estagiário - MOE</title>
+  <title>Tela de atualização de Cadastro do Empregador/Empresa - MOE</title>
 
 </head>
 
@@ -20,27 +20,27 @@
         <a href="/" class="brand-logo">MOE</a>
         <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="/estagiario"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
+          <li><a href="/empregador"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
           <li><a href="/sair">Sair</a></li>
         </ul>
       </div>
     </nav>
   </div>
   <ul class="sidenav" id="sidenav">
-    <li><a href="/estagiario"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
+    <li><a href="/empregador"><?= $_SESSION['nome'] ?><i class="material-icons right">person</i></a></li>
     <li><a href="/sair">Sair</a></li>
   </ul>
 
   <?= $this->include('partials/alerts') ?>
 
   <?php
-  if ($_SESSION['id_usuario'] != $_SESSION['id_parametrizado']) :
+  if ($_SESSION['id_usuario'] != $_SESSION['id_parametrizado1']) :
     redirect()->back()->withInput()->with('warning', 'Acesso Negado, você não tem permissão para alterar esse registro!!');
   ?>
   <?php else : ?>
     <main class="page">
       <div class="registro">
-        <form action="/estagio/edit/<?= $_SESSION['id_usuario'] ?>" method="POST" data-parsley-validate>
+        <form action="/empregador/edit/<?= $_SESSION['id_usuario'] ?>" method="POST" data-parsley-validate>
           <div class="row">
             <div class="col s12 m10 card-wrapper">
               <div class="card grey lighten-5">
@@ -63,37 +63,36 @@
                     <small>A senha deve possuir ao menos 6 caracteres, uma letra maiúscula, um número e um caractere especial.</small>
                   </div>
 
-                  <div class="estagiario">
-
+                  <div class="empregador">
                     <div class="row">
                       <div class="input-field">
-                        <i class="material-icons prefix">person</i>
-                        <label for="nome_estagiario">Seu Nome <span class="required">*</span></label>
-                        <input type="text" class="validate" name="nome_estagiario" id="nome_estagiario" value="<?= $estagiario['nome_estagiario'] ?>" maxlength="80" required>
+                        <i class="material-icons prefix">work</i>
+                        <label for="nome_empresa">Nome da Empresa <span class="required">*</span></label>
+                        <input type="text" class="validate" name="nome_empresa" id="nome_empresa" value="<?= $empregador['nome_empresa'] ?>" maxlength="60" required>
                       </div>
                       <div class="input-field">
-                        <i class="material-icons prefix">school</i>
-                        <label for="curso_estagiario">Nome do Curso <span class="required">*</span></label>
-                        <input type="text" class="validate" name="curso_estagiario" id="curso_estagiario" value="<?= $estagiario['curso_estagiario'] ?>" maxlength="80" required>
+                        <i class="material-icons prefix">add_location</i>
+                        <label for="endereco_empresa">Endereço da Empresa <span class="required">*</span></label>
+                        <input type="text" class="validate" name="endereco_empresa" id="endereco_empresa" value="<?= $empregador['endereco_empresa'] ?>" maxlength="80" required>
                       </div>
                       <div class="input-field">
-                        <i class="material-icons prefix">date_range</i>
-                        <label for="ano_ingresso_estagiario">Ano de Ingresso <span class="required">*</span></label>
-                        <input type="number" class="validate" name="ano_ingresso_estagiario" id="ano_ingresso_estagiario" value="<?= $estagiario['ano_ingresso_estagiario'] ?>" required>
-                      </div>
-                      <div class="input-field">
-                        <i class="material-icons prefix">access_time</i>
-                        <label for="integralizacao">Integralização Atual <span class="required">*</span></label>
-                        <input type="number" class="validate" name="integralizacao" id="integralizacao" min="0" max="100" value="<?= $estagiario['integralizacao'] ?>" required>
+                        <i class="material-icons prefix">badge</i>
+                        <label for="pessoa_de_contato">Nome da Pessoa para Contato <span class="required">*</span></label>
+                        <input type="text" class="validate" name="pessoa_de_contato" id="pessoa_de_contato" value="<?= $empregador['pessoa_de_contato'] ?>" maxlength="60" required>
                       </div>
                       <div class="input-field">
                         <i class="material-icons prefix">description</i>
-                        <label for="minicurriculo_estagiario">Minicurrículo <span class="required">*</span></label>
-                        <textarea type="text" class="materialize-textarea validate" name="minicurriculo_estagiario" id="minicurriculo_estagiario" required><?= $estagiario['minicurriculo_estagiario'] ?></textarea>
+                        <label for="descricao_empresa">Descrição da Empresa <span class="required">*</span></label>
+                        <textarea type="text" class="materialize-textarea validate" name="descricao_empresa" id="descricao_empresa" required><?= $empregador['descricao_empresa'] ?></textarea>
                       </div>
-
+                      <div class="input-field">
+                        <i class="material-icons prefix">shop</i>
+                        <label for="produtos_empresa">Produtos/Serviços que Empresa oferece <span class="required">*</span></label>
+                        <input type="text" class="validate" name="produtos_empresa" id="produtos_empresa" value="<?= $empregador['produtos_empresa'] ?>" maxlength="220" required>
+                      </div>
                       <button class="btn right btn-primario" type="submit">Atualizar Dados</button>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -105,8 +104,8 @@
     <?= $this->include('partials/footer') ?>
 
     <script>
-      $('#minicurriculo_estagiario').val('New Text');
-      M.textareaAutoResize($('#minicurriculo_estagiario'));
+      $('#descricao_empresa').val('New Text');
+      M.textareaAutoResize($('#descricao_empresa'));
     </script>
     <script src="/resources/jquery-3.6.0.min.js"></script>
     <script src="/resources/materialize/materialize.min.js"></script>
