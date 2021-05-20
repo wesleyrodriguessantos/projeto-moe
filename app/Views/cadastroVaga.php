@@ -62,7 +62,7 @@
 
               <div class="input-field">
                 <i class="material-icons prefix">access_time</i>
-                <label for="horas" hidden>Descrição sobre a Vaga <span class="required">*</span></label>
+                <label for="horas" hidden>Carga Horária Semanal <span class="required">*</span></label>
                 <select for="horas" name="horas" id="horas">
                   <option value="">Carga Horária Semanal</option>
                   <option value="20">20 Horas</option>
