@@ -48,7 +48,7 @@
   <main class="page" style="padding-top: 0px;">
     <h2 class="center" style="margin-bottom: 30px;"><?= $vaga['nome_vaga'] ?></h2>
 
-    <div class="container">
+    <div class="container page-empresas">
       <div class="row">
         <div class="col s12 card-wrapper">
           <div class="card grey lighten-5">
@@ -68,10 +68,15 @@
             </div>
             <div class="card-action" style="text-align: right">
               <div>
-                <label>
-                  <input type="checkbox">
-                  <span>Confirmar Interesse</span>
-                </label>
+                <?php $interesseEmpresa = $interesse->where('id_estagiario_int', $_SESSION['id_usuario'])->where('id_empregador_int', $vaga['id_empregadorVaga'])->first() ?>
+                <?php if (!$interesseEmpresa) : ?>
+                  <button class="btn btn-primario btn-interesse" data-id="<?= $vaga['id_empregadorVaga'] ?>">Cadastrar Interesse em Vagas dessa Empresa</button>
+                <?php else : ?>
+                  <label style="color: #26a69a;">
+                    <input type="checkbox" checked disabled>
+                    <span>Você já está seguindo as vagas dessa empresa</span>
+                  </label>
+                <?php endif; ?>
               </div>
             </div>
           </div>

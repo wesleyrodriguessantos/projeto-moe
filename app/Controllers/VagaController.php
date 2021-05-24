@@ -32,9 +32,11 @@ class VagaController extends BaseController
   public function vaga($id)
   {
     $vagasModel = new Vagas();
+    $interesseModel = new Interesse();
 
     return view('interesseVaga', [
-      'vaga' => $vagasModel->find($id)
+      'vaga' => $vagasModel->find($id),
+      'interesse' => $interesseModel
     ]);
 
     return view('interesseVaga');

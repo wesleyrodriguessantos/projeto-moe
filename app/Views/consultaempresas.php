@@ -94,6 +94,11 @@
                     <?php $interesseEmpresa = $interesse->where('id_estagiario_int', $_SESSION['id_usuario'])->where('id_empregador_int', $empresa['id_empregador'])->first() ?>
                     <?php if (!$interesseEmpresa) : ?>
                       <button class="btn btn-primario btn-interesse" data-id="<?= $empresa['id_empregador'] ?>">Cadastrar Interesse</button>
+                    <?php else : ?>
+                      <label style="color: #26a69a;">
+                        <input type="checkbox" checked disabled>
+                        <span>Você já está seguindo as vagas dessa empresa</span>
+                      </label>
                     <?php endif; ?>
                   </div>
                 </div>
