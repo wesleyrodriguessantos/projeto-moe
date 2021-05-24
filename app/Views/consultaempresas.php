@@ -64,7 +64,7 @@
   <main class="page" style="padding-top: 0px;">
     <h2 class="center" style="margin-bottom: 30px;">Empresas Cadastradas</h2>
 
-    <div class="container">
+    <div class="container page-empresas">
       <div class="row">
         <div class="col s12">
           <?php if (count($empresas) > 0) : ?>
@@ -89,12 +89,12 @@
                     <?= $empresa['produtos_empresa'] ?>
                   </p>
                 </div>
-                <div class="card-action" style="text-align: right">
+                <div class="card-action">
                   <div>
-                    <label>
-                      <input type="checkbox">
-                      <span>Seguir empresa</span>
-                    </label>
+                    <?php $interesseEmpresa = $interesse->where('id_estagiario_int', $_SESSION['id_usuario'])->where('id_empregador_int', $empresa['id_empregador'])->first() ?>
+                    <?php if (!$interesseEmpresa) : ?>
+                      <button class="btn btn-primario btn-interesse" data-id="<?= $empresa['id_empregador'] ?>">Cadastrar Interesse</button>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div> <!-- Fim do Card -->

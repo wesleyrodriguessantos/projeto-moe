@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Empregador;
 use App\Models\Vagas;
+use App\Models\Interesse;
 
 class VagaController extends BaseController
 {
@@ -42,10 +43,12 @@ class VagaController extends BaseController
   public function consultaEmpresas()
   {
     $empresasModel = new Empregador();
+    $interesseModel = new Interesse();
 
     return view('consultaempresas', [
       'empresas' => $empresasModel->paginate(20),
-      'pager' => $empresasModel->pager
+      'pager' => $empresasModel->pager,
+      'interesse' => $interesseModel
     ]);
   }
 
@@ -245,5 +248,40 @@ class VagaController extends BaseController
         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
       }
     }
+  }
+
+  public function cadastrarInteresse()
+  {
+    $request = service('request');
+    $idEmpresa = $request->getVar('id');
+
+    if ($idEmpresa) {
+
+      $modelEmpresa = new Empregador();
+
+      $empregador = $modelEmpresa->find($idEmpresa);
+
+      if ($empregador) {
+
+        $modelInteresseEmpresa = new Interesse();
+
+        $idEstagiario = $_SESSION['id_usuario'];
+
+        $interesseEmpresa = $modelInteresseEmpresa->where('id_estagiario_int', $idEstagiario)->where('id_empregador_int', $idEmpresa)->first();
+
+        if (!$interesseEmpresa) {
+
+          $interesseEmpresa['id_estagiario_int'] = $idEstagiario;
+          $interesseEmpresa['id_empregador_int'] = $idEmpresa;
+
+          $modelInteresseEmpresa->save($interesseEmpresa);
+
+          return $this->response->setStatusCode(200);
+        }
+
+        return $this->response->setStatusCode(400)->setBody('Interesse já cadastrado');
+      }
+    }
+    return $this->response->setStatusCode(400)->setBody('Id inválido');
   }
 }

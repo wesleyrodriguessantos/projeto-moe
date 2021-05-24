@@ -26,7 +26,9 @@ main.page  {
 .btn.btn-secundario {
   background-color: #444444;
 }
-
+.btn.btn-apagar {
+  background-color: #c62828;
+}
 small {
   color: #4b4b4b !important;
 }

@@ -4,11 +4,34 @@ $(function () {
     var elems = document.querySelectorAll('.sidenav');
     M.Sidenav.init(elems, { edge: 'right' });
 
+    // //alert
+    // $('.materialert').each(function () {
+
+    //     let $alert = $(this);
+
+    //     //mostrar o alerta
+    //     $alert.css({ top: '-50px' }).animate({ opacity: 1, top: '0px' }, 'fast');
+
+    //     function closeAlert() {
+    //         $alert.css({ opacity: 0, transition: 'opacity 0.5s' }).slideUp(function () {
+    //             $alert.remove();
+    //         });
+    //     }
+
+    //     //fechar o alerta automaticamente depois de 10 segundos
+    //     setTimeout(() => {
+    //         closeAlert();
+    //     }, 10000);
+
+    //     //fechar o alerta ao clicar no botão
+    //     $alert.find('.close-alert').on('click', function () {
+    //         closeAlert();
+    //     });
+
+    // });
+
     //alert
-    $('.materialert').each(function () {
-
-        let $alert = $(this);
-
+    function alert($alert) {
         //mostrar o alerta
         $alert.css({ top: '-50px' }).animate({ opacity: 1, top: '0px' }, 'fast');
 
@@ -27,8 +50,81 @@ $(function () {
         $alert.find('.close-alert').on('click', function () {
             closeAlert();
         });
-
+    }
+    $('.materialert').each(function () {
+        alert($(this));
     });
+    function createAlert(tipo, mensagem) {
+
+        let $alert = null;
+
+        switch (tipo) {
+            case 'success':
+                $alert = $(`
+                    <div class="materialert success">
+                        <div class="material-icons">check</div>
+                        ${mensagem}
+                        <button type="button" class="close-alert">×</button>
+                    </div>
+                `);
+                break;
+
+            case 'error':
+                $alert = $(`
+                    <div class="materialert error">
+                        <div class="material-icons">error</div>
+                        ${mensagem}
+                        <button type="button" class="close-alert">×</button>
+                    </div>
+                `);
+                break;
+        }
+
+        if ($alert) {
+
+            $('.alerts').append($alert);
+            alert($alert);
+
+        }
+
+    }
+
+    function createAlert(tipo, mensagem) {
+
+        let $alert = null;
+
+        switch (tipo) {
+            case 'success':
+                $alert = $(`
+                    <div class="materialert success">
+                        <div class="material-icons">check</div>
+                        ${mensagem}
+                        <button type="button" class="close-alert">×</button>
+                    </div>
+                `);
+                break;
+
+            case 'error':
+                $alert = $(`
+                    <div class="materialert error">
+                        <div class="material-icons">error</div>
+                        ${mensagem}
+                        <button type="button" class="close-alert">×</button>
+                    </div>
+                `);
+                break;
+        }
+
+        if ($alert) {
+
+            $('.alerts').append($alert);
+            alert($alert);
+
+        }
+
+    }
+
+    let siteUrl = 'http://localhost:8080';
 
     $('.page .registro').each(function () {
 
@@ -98,6 +194,31 @@ $(function () {
 
         });
         $self.find('.tipo-conta input[name="tipo_conta"]:checked').trigger('change');
+
+    });
+
+    $('.page .page-empresas').each(function () {
+
+        $('.btn-interesse').on('click', function () {
+
+            let $btn = $(this);
+
+            let idEmpresa = $btn.attr('data-id');
+
+            $.ajax({
+                url: siteUrl + '/empresas/cadastro-interesse',
+                method: 'POST',
+                data: { id: idEmpresa },
+                success: function () {
+                    createAlert('success', 'Interesse cadastrado com sucesso');
+                    $btn.remove();
+                },
+                error: function (response) {
+                    createAlert('error', 'Não foi possível cadastrar interesse nessa empresa: ' + response.responseText);
+                }
+            });
+
+        });
 
     });
 

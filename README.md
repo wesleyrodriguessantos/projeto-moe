@@ -69,4 +69,13 @@ remuneracao VARCHAR(10),
 id_empregadorVaga INT NOT NULL,
 CONSTRAINT fk_empregador FOREIGN KEY (id_empregadorVaga) REFERENCES empregador (id_empregador)
 );
+
+CREATE TABLE IF NOT EXISTS interesse
+(
+id INT AUTO_INCREMENT PRIMARY KEY,
+id_empregador_int INT NOT NULL,
+id_estagiario_int INT NOT NULL,
+CONSTRAINT fk_empregador_int FOREIGN KEY (id_empregador_int) REFERENCES empregador (id_empregador),
+CONSTRAINT fk_estagiario_int FOREIGN KEY (id_estagiario_int) REFERENCES estagiario (id_estagiario)
+);
   </pre>

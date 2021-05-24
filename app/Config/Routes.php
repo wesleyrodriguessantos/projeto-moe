@@ -47,7 +47,10 @@ $routes->get('/empregador/editar/(:num)', 'UserController::editEmpregador/$1', [
 $routes->post('/empregador/edit/(:num)', 'UserController::EmpStore/$1', ['filter' => 'authemp']);
 
 $routes->get('/vagas', 'VagaController::index', ['filter' => 'authestag']);
+
 $routes->get('/empresas', 'VagaController::consultaEmpresas', ['filter' => 'authestag']);
+$routes->post('/empresas/cadastro-interesse', 'VagaController::cadastrarInteresse', ['filter' => 'authestag']);
+
 $routes->add('/vaga/(:num)', 'VagaController::vaga/$1', ['filter' => 'authestag']);
 $routes->get('/cadastro-vaga', 'VagaController::cadastrarVaga', ['filter' => 'authemp']);
 $routes->get('/vagas/editar', 'VagaController::ListarVagasEditar', ['filter' => 'authemp']);
