@@ -74,10 +74,10 @@
         <div class="col s12 l6">
           <div class="card deep-purple accent-3 darken-1 center">
             <div class="card-content white-text">
-              <span class="card-title">Estagiarios Interessados na Empresa</span>
+              <span class="card-title">Candidatos Interessados na Empresa</span>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn-large"><i class="material-icons right">search</i>Consultar</a>
+              <a href="/interessados" class="waves-effect waves-light btn-large"><i class="material-icons right">search</i>Consultar</a>
             </div>
           </div>
         </div>

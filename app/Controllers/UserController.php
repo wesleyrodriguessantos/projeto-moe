@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Controllers\Home;
 use App\Models\Empregador;
 use App\Models\Estagiario;
+use App\Models\Interesse;
 
 class UserController extends BaseController
 {
@@ -345,6 +345,17 @@ class UserController extends BaseController
 
       return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
+  }
+
+  public function listaInteresse()
+  {
+    $interesseModel = new Interesse();
+    $estagiarioModel = new Estagiario();
+
+    return view('estagiariosInteressados', [
+      'interesse' => $interesseModel,
+      'estagiarios' => $estagiarioModel->findAll()
+    ]);
   }
 
   public function novoEmpregador()

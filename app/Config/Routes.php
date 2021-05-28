@@ -43,6 +43,8 @@ $routes->get('/estagiario/editar/(:num)', 'UserController::editEstagiario/$1', [
 $routes->post('/estagio/edit/(:num)', 'UserController::estagStore/$1', ['filter' => 'authestag']);
 $routes->get('/empregador', 'UserController::ambienteEmpregador', ['filter' => 'authemp']);
 
+
+$routes->get('/interessados', 'UserController::listaInteresse', ['filter' => 'authemp']);
 $routes->get('/empregador/editar/(:num)', 'UserController::editEmpregador/$1', ['filter' => 'authemp']);
 $routes->post('/empregador/edit/(:num)', 'UserController::EmpStore/$1', ['filter' => 'authemp']);
 
