@@ -76,7 +76,7 @@
               <span class="card-title">Consultar/Editar Empresas que está Seguindo</span>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn-large"><i class="material-icons right">short_text</i>Consultar/Editar</a>
+              <a href="/estagiario/interesse" class="waves-effect waves-light btn-large"><i class="material-icons right">short_text</i>Consultar/Editar</a>
             </div>
           </div>
         </div>

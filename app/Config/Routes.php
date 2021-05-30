@@ -53,6 +53,9 @@ $routes->get('/vagas', 'VagaController::index', ['filter' => 'authestag']);
 $routes->get('/empresas', 'VagaController::consultaEmpresas', ['filter' => 'authestag']);
 $routes->post('/empresas/cadastro-interesse', 'VagaController::cadastrarInteresse', ['filter' => 'authestag']);
 
+$routes->get('/estagiario/interesse', 'UserController::empresasInteresse', ['filter' => 'authestag']);
+$routes->post('/estagiario/interesse/descadastrar', 'UserController::descadastrarInteresse', ['filter' => 'authestag']);
+
 $routes->add('/vaga/(:num)', 'VagaController::vaga/$1', ['filter' => 'authestag']);
 $routes->get('/cadastro-vaga', 'VagaController::cadastrarVaga', ['filter' => 'authemp']);
 $routes->get('/vagas/editar', 'VagaController::ListarVagasEditar', ['filter' => 'authemp']);

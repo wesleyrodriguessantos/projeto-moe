@@ -222,4 +222,31 @@ $(function () {
 
     });
 
+    $('.page .page-empresasInteresse').each(function () {
+
+        $('.btn-interesse').on('click', function () {
+
+            let $btn = $(this);
+            let idEmpresa = $btn.attr('data-id');
+
+            $.ajax({
+                url: siteUrl + '/estagiario/interesse/descadastrar',
+                method: 'POST',
+                data: { id: idEmpresa },
+                success: function () {
+
+                    createAlert('success', 'Interesse descadastrado com sucesso!');
+
+                    $btn.remove();
+
+                },
+                error: function (response) {
+                    createAlert('error', 'Não foi possível descadastrar interesse nessa empresa: ' + response.responseText);
+                }
+            });
+
+        });
+
+    });
+
 });

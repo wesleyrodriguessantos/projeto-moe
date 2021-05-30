@@ -358,6 +358,59 @@ class UserController extends BaseController
     ]);
   }
 
+  public function empresasInteresse()
+  {
+
+    $db = db_connect();
+
+    $empresas = $db->query('select *
+			from interesse as inte
+			left join empregador as e on inte.id_empregador_int = e.id_empregador
+			where inte.id_estagiario_int = ' . $_SESSION['id_usuario'])
+      ->getResultArray();
+
+    $modelEmpresa = new Empregador();
+
+    return view('editInteresse', [
+      'empresas' => $empresas,
+      'modelEmpresa' => $modelEmpresa,
+    ]);
+  }
+
+  public function descadastrarInteresse()
+  {
+
+    $request = service('request');
+    $idEmpresa = $request->getVar('id');
+
+    if ($idEmpresa) {
+
+      $modelEmpresa = new Empregador();
+
+      $empregador = $modelEmpresa->find($idEmpresa);
+
+      if ($empregador) {
+
+        $modelInteresseEmpresa = new Interesse();
+
+        $idEstagiario = $_SESSION['id_usuario'];
+
+        $interesseEmpresa = $modelInteresseEmpresa->where('id_estagiario_int', $idEstagiario)->where('id_empregador_int', $idEmpresa)->first();
+
+        if ($interesseEmpresa) {
+
+          $modelInteresseEmpresa->delete($interesseEmpresa['id']);
+
+          return $this->response->setStatusCode(200);
+        }
+
+        return $this->response->setStatusCode(400)->setBody('Interesse já cadastrado');
+      }
+    }
+
+    return $this->response->setStatusCode(400)->setBody('Id inválido');
+  }
+
   public function novoEmpregador()
   {
 
