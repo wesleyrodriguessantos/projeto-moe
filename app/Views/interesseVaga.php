@@ -50,37 +50,67 @@
 
     <div class="container page-empresas">
       <div class="row">
-        <div class="col s12 card-wrapper">
-          <div class="card grey lighten-5">
-            <div class="card-content black-text">
-              <p><b>Descrição da Vaga</b><br>
-                <?= $vaga['descricao_vaga'] ?>
-              </p>
-              <p><b>Lista de Atividades</b><br>
-                <?= $vaga['lista_atividades'] ?>
-              </p>
-              <p><b>Lista de Habilidades</b><br>
-                <?= $vaga['lista_habilidades'] ?>
-              </p>
-              <p><b>Semestre Mínimo Requerido:</b> <?= $vaga['semestre'] ?>º</p>
-              <p><b>Horas Semanais:</b> <?= $vaga['horas'] ?> Horas</p>
-              <p><b>Remuneração:</b> R$ <?= $vaga['remuneracao'] ?></p>
-            </div>
-            <div class="card-action" style="text-align: right">
-              <div>
-                <?php $interesseEmpresa = $interesse->where('id_estagiario_int', $_SESSION['id_usuario'])->where('id_empregador_int', $vaga['id_empregadorVaga'])->first() ?>
-                <?php if (!$interesseEmpresa) : ?>
-                  <button class="btn btn-primario btn-interesse" data-id="<?= $vaga['id_empregadorVaga'] ?>">Cadastrar Interesse em Vagas dessa Empresa</button>
-                <?php else : ?>
-                  <label style="color: #26a69a;">
-                    <input type="checkbox" checked disabled>
-                    <span>Você já está seguindo as vagas dessa empresa</span>
-                  </label>
-                <?php endif; ?>
+
+        <?php if ($_SESSION['curso_estagiario'] == 'Sistemas de Informação' && ($_SESSION['integralizacao'] < 20 || $_SESSION['integralizacao'] > 80)) : ?>
+          <div class="col s12 card-wrapper">
+            <div class="card grey lighten-5">
+              <div class="card-content black-text center">
+                <h4 style="color: red;">Prezado(a) <?= $_SESSION['nome'] ?>, o seu Curso de <b><?= $_SESSION['curso_estagiario'] ?></b>, exige que para se candidatar a uma vaga de Estágio o aluno tenha cursado entre 20% e 80% do curso.<br>
+                  E nesse exato momento a sua integralização é de <b><?= $_SESSION['integralizacao'] ?>%</b></h4>
               </div>
             </div>
           </div>
-        </div>
+        <?php elseif ($_SESSION['curso_estagiario'] == 'Engenharia de Software' && ($_SESSION['integralizacao'] < 20 || $_SESSION['integralizacao'] > 80)) : ?>
+          <div class="col s12 card-wrapper">
+            <div class="card grey lighten-5">
+              <div class="card-content black-text center">
+                <h4 style="color: red;">Prezado(a) <?= $_SESSION['nome'] ?>, o seu Curso de <b><?= $_SESSION['curso_estagiario'] ?></b>, exige que para se candidatar a uma vaga de Estágio o aluno tenha cursado entre 20% e 80% do curso.<br>
+                  E nesse exato momento a sua integralização é de <b><?= $_SESSION['integralizacao'] ?>%</b></h4>
+              </div>
+            </div>
+          </div>
+        <?php elseif ($_SESSION['curso_estagiario'] == 'Engenharia de Computação' && ($_SESSION['integralizacao'] < 40 || $_SESSION['integralizacao'] > 80)) : ?>
+          <div class="col s12 card-wrapper">
+            <div class="card grey lighten-5">
+              <div class="card-content black-text center">
+                <h4 style="color: red;">Prezado(a) <?= $_SESSION['nome'] ?>, o seu Curso de <b><?= $_SESSION['curso_estagiario'] ?></b>, exige que para se candidatar a uma vaga de Estágio o aluno tenha cursado entre 40% e 80% do curso.<br>
+                  E nesse exato momento a sua integralização é de <b><?= $_SESSION['integralizacao'] ?>%</b></h4>
+              </div>
+            </div>
+          </div>
+        <?php else : ?>
+          <div class="col s12 card-wrapper">
+            <div class="card grey lighten-5">
+              <div class="card-content black-text">
+                <p><b>Descrição da Vaga</b><br>
+                  <?= $vaga['descricao_vaga'] ?>
+                </p>
+                <p><b>Lista de Atividades</b><br>
+                  <?= $vaga['lista_atividades'] ?>
+                </p>
+                <p><b>Lista de Habilidades</b><br>
+                  <?= $vaga['lista_habilidades'] ?>
+                </p>
+                <p><b>Semestre Mínimo Requerido:</b> <?= $vaga['semestre'] ?>º</p>
+                <p><b>Horas Semanais:</b> <?= $vaga['horas'] ?> Horas</p>
+                <p><b>Remuneração:</b> R$ <?= $vaga['remuneracao'] ?></p>
+              </div>
+              <div class="card-action" style="text-align: right">
+                <div>
+                  <?php $interesseEmpresa = $interesse->where('id_estagiario_int', $_SESSION['id_usuario'])->where('id_empregador_int', $vaga['id_empregadorVaga'])->first() ?>
+                  <?php if (!$interesseEmpresa) : ?>
+                    <button class="btn btn-primario btn-interesse" data-id="<?= $vaga['id_empregadorVaga'] ?>">Cadastrar Interesse nessa Vaga</button>
+                  <?php else : ?>
+                    <label style="color: #26a69a;">
+                      <input type="checkbox" checked disabled>
+                      <span>Você já está seguindo as vagas dessa empresa</span>
+                    </label>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
 

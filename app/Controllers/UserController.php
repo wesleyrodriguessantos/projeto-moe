@@ -227,6 +227,7 @@ class UserController extends BaseController
           $_SESSION['tipo_usuario'] = $result['tipo_usuario'];
           $_SESSION['nome'] = $result['nome_estagiario'];
           $_SESSION['integralizacao'] = $result['integralizacao'];
+          $_SESSION['curso_estagiario'] = $result['curso_estagiario'];
 
           return redirect()->to('/estagiario')->with('success', 'Estagiário Logado com sucesso!');
         } else {
@@ -318,7 +319,6 @@ class UserController extends BaseController
       $db = db_connect();
 
       $db->transStart(); //inicia a transação
-
 
       $modelEstagiario = new Estagiario();
 
