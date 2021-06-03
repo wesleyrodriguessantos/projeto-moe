@@ -11,6 +11,21 @@
 
   <title>MOE - Página Inicial</title>
 
+  <style>
+    main.page {
+      background-image: url(img/vaga_estagio.jpg);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    @media (max-width: 1000px) {
+      main.page {
+        background-image: url(img/vaga_estagio.jpg);
+        background-repeat: repeat;
+        background-size: contain;
+      }
+    }
+  </style>
 </head>
 
 <body class="indigo lighten-5">
@@ -18,24 +33,60 @@
     <nav id="navprincipal">
       <div class="nav-wrapper">
         <a href="/" class="brand-logo">MOE</a>
-        <a href="#" data-target="sidenav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/cadastrar">Cadastrar</a></li>
-          <li><a href="/login">Entrar</a></li>
-        </ul>
       </div>
     </nav>
   </div>
-  <ul class="sidenav" id="sidenav">
-    <li><a href="/cadastrar">Cadastrar</a></li>
-    <li><a href="/login">Entrar</a></li>
-  </ul>
 
   <?= $this->include('partials/alerts') ?>
 
   <main class="page">
-    <div class="container">
-      <h2>Página Inicial</h2>
+    <div class="container" style="margin-top: 50px;">
+      <div class="row">
+        <div class="col s12 l6">
+          <div class="card blue-grey lighten-5 center">
+            <div class="card-content">
+              <span class="card-title"><b>Cadastre-se no MOE</b></span>
+            </div>
+            <div class="card-action">
+              <a href="/cadastrar" class="waves-effect deep-purple darken-3 btn-large"><i class="material-icons right">person_add</i>Cadastrar-se</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l6">
+          <div class="card blue-grey lighten-5 center">
+            <div class="card-content">
+              <span class="card-title"><b>Faça login no MOE</b></span>
+            </div>
+            <div class="card-action">
+              <a href="/login" class="waves-effect deep-purple darken-3 btn-large"><i class="material-icons right">person_pin</i>Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 l6">
+          <div class="card blue-grey lighten-5 center">
+            <div class="card-content">
+              <span class="card-title"><b>Acessar o Ambiente do Empregador</b></span>
+            </div>
+            <div class="card-action">
+              <a href="/empregador" class="waves-effect deep-purple darken-3 btn-large"><i class="material-icons right">visibility</i>Ambiente Empregador</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 l6">
+          <div class="card blue-grey lighten-5 center">
+            <div class="card-content">
+              <span class="card-title"><b>Acessar o Ambiente do Estagiário</b></span>
+            </div>
+            <div class="card-action">
+              <a href="/estagiario" class="waves-effect deep-purple darken-3 btn-large"><i class="material-icons right">visibility</i>Ambiente Estagiário</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 
