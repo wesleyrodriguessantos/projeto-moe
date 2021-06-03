@@ -334,6 +334,13 @@ class UserController extends BaseController
 
       $db->transComplete(); //finaliza a transação
 
+      //envia o email confirmando a criação da conta
+      $email = service('email');
+      $email->setTo($estagiario['email']);
+      $email->setSubject('Criação de conta');
+      $email->setMessage('Sua conta no MOE foi criada com sucesso');
+      $email->send();
+
       if ($db->transStatus() == false) {
 
         return redirect()->back()->withInput()->with('warning', 'Não foi possível salvar os dados no momento. Tente novamente mais tarde.');
@@ -484,6 +491,13 @@ class UserController extends BaseController
       $modelEmpregador->save($empregador);
 
       $db->transComplete(); //finaliza a transação
+
+      //envia o email confirmando a criação da conta
+      $email = service('email');
+      $email->setTo($empregador['email']);
+      $email->setSubject('Criação de conta');
+      $email->setMessage('Prezado Empregador, a sua conta no MOE foi criada com sucesso!');
+      $email->send();
 
       if ($db->transStatus() == false) {
 
